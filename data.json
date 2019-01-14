@@ -113,7 +113,8 @@
             "regex": "(?i)HTTP/1.+\\b403\\b.+\\s+Server: aws",
             "signatures": [
                 "2998:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
-                "fffa:RVZXum60OEhCWapAYKYPk4JyWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "fffa:RVZXum60OEhCWapAYKYPk4JyWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "9de0:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthtOj+hXrAA16BcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
         "barracuda": {
@@ -128,6 +129,12 @@
             "company": "BinarySEC",
             "name": "BinarySEC",
             "regex": "Server: BinarySec|x-binarysec-",
+            "signatures": []
+        },
+        "bitninja": {
+            "company": "BitNinja",
+            "name": "BitNinja",
+            "regex": "alt=\"BitNinja|Security check by BitNinja|your IP will be removed from BitNinja|<title>Visitor anti-robot validation</title>",
             "signatures": []
         },
         "bluedon": {
@@ -173,7 +180,8 @@
             "regex": "Attention Required! \\| Cloudflare|CLOUDFLARE_ERROR_",
             "signatures": [
                 "4849:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
-                "675a:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+                "675a:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "0b76:RVdXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
             ]
         },
         "cloudfront": {
