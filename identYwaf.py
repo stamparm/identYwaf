@@ -28,7 +28,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.9"
+VERSION = "1.0.10"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -309,7 +309,7 @@ def run():
 
         if signature in SIGNATURES:
             print colorize("[+] blind match: '%s' (100%%)" % DATA_JSON["wafs"][SIGNATURES[signature]]["name"])
-        elif results.count('.') < 3:
+        elif results.count('x') < 3:
             print colorize("[-] blind match: -")
         else:
             matches = {}
