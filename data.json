@@ -380,6 +380,12 @@
                 "fa37:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
+        "perimeterx": {
+            "company": "PerimeterX, Inc.",
+            "name": "PerimeterX",
+            "regex": "https://www.perimeterx.com/whywasiblocked",
+            "signatures": []
+        },
         "radware": {
             "company": "Radware",
             "name": "AppWall",
