@@ -83,7 +83,6 @@ def exit(message):
     _exit(1)
 
 def retrieve(url, data=None):
-    print url
     retval = {}
     try:
         req = urllib2.Request("".join(url[_].replace(' ', "%20") if _ > url.find('?') else url[_] for _ in xrange(len(url))), data, HEADERS)
