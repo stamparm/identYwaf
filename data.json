@@ -1,0 +1,631 @@
+{
+    "__copyright__": "Copyright (c) 2019 Miroslav Stampar (@stamparm), MIT. See the file 'LICENSE' for copying permission",
+    "__notice__": "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software",
+
+    "payloads": [
+        "<img>",
+        "1 AND 1",
+        "1/**/AND/**/1",
+        "1/*0AND*/1",
+        "1 AND 1=1",
+        "1 AND 1 LIKE 1",
+        "1 AND 1 BETWEEN 0 AND 1",
+        "1 AND 2>(SELECT 1)-- -",
+        "' OR SLEEP(5) OR '",
+        "admin'-- -",
+        "information_schema",
+        ";DROP TABLE mysql.users",
+        "';DROP DATABASE mysql#",
+        "1/**/UNION/**/SELECT/**/1/**/FROM/**/information_schema.*",
+        "SELECT id FROM users WHERE id>2",
+        "1 UNION SELECT information_schema.*",
+        "1;EXEC xp_cmdshell('type autoexec.bat');",
+        "1;INSERT INTO USERS values('admin', 'foobar')",
+        "<img src=x onerror=alert('XSS')>",
+        "<img onfoo=f()>",
+        "<script>",
+        "<script>alert('XSS')</script>",
+        "\\\";alert('XSS');//",
+        "1' onerror=alert(String.fromCharCode(88,83,83))>",
+        "<![CDATA[<script>var n=0;while(true){n++;}</script>]]>",
+        "<meta http-equiv=\"refresh\" content=\"0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K\">",
+        "javascript:alert(/XSS/)",
+        "<marquee onstart=alert(1)>",
+        "' and count(/*)=1 and '1'='1",
+        "count(/child::node())",
+        "' and count(/comment())=1 and '1'='1",
+        "' or '1'='1",
+        "<!ENTITY xxe SYSTEM \"file:///etc/passwd\" >]><foo>&xxe;</foo>",
+        "admin*)((|userpassword=*)",
+        "user=*)(uid=*))(|(uid=*",
+        "*(|(objectclass=*))",
+        "true, $where: '1 == 1'",
+        "{ $ne: 1 }",
+        "' } ], $comment:'success'",
+        "<?php include_once(\"/etc/passwd\"); ?>",
+        "netstat -antup | grep :443; ping 127.0.0.1; curl http://www.google.com",
+        "/////.htaccess",
+        "/etc/passwd",
+        "../../boot.ini",
+        "C:/inetpub/wwwroot/global.asa"
+    ],
+    "wafs": {
+        "360": {
+            "company": "360",
+            "name": "360",
+            "regex": "<title>493</title>|/wzws-waf-cgi/",
+            "signatures": [
+                "9778:RVZXum61OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTC"
+            ]
+        },
+        "aesecure": {
+            "company": "aeSecure",
+            "name": "aeSecure",
+            "regex": "aesecure_denied\\.png",
+            "signatures": []
+        },
+        "airlock": {
+            "company": "Phion/Ergon",
+            "name": "Airlock",
+            "regex": "The server detected a syntax error in your request",
+            "signatures": [
+                "3e2c:RVZXu261OEhCWapBYKcPk4JzWOtohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXomtKaK59n+i6c4RmkwI2FZjxtDtAeq6c36A5chW1XaTD"
+            ]
+        },
+        "anquanbao": {
+            "company": "Anquanbao",
+            "name": "Anquanbao",
+            "regex": "/aqb_cc/error/",
+            "signatures": [
+                "c790:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9hsOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "approach": {
+            "company": "Approach",
+            "name": "Approach",
+            "regex": "If this was an legitimate request please contact us with details!|Approach.+?Web Application Firewall",
+            "signatures": []
+        },
+        "armor": {
+            "company": "Armor Defense",
+            "name": "Armor Protection",
+            "regex": "This request has been blocked by website protection from Armor",
+            "signatures": [
+                "03ec:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XaTC",
+                "1160:RVZXum60OEhCWapBYKYPk4JyWOtohM4IiUcMr2RWg1qQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "asm": {
+            "company": "F5 Networks",
+            "name": "Application Security Manager",
+            "regex": "The requested URL was rejected\\. Please consult with your administrator|security\\.f5aas\\.com",
+            "signatures": [
+                "d66c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA5chS1XaTC",
+                "2f81:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtDtAeq+c36A4chS1XaTC",
+                "4fd0:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC",
+                "14fa:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XaTC",
+                "8bcf:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq6c36A5chS1XaTC"
+            ]
+        },
+        "aws": {
+            "company": "Amazon",
+            "name": "Amazon Web Services",
+            "regex": "(?i)HTTP/1.+\\b403\\b.+\\s+Server: aws",
+            "signatures": [
+                "2998:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "fffa:RVZXum60OEhCWapAYKYPk4JyWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "barracuda": {
+            "company": "Barracuda Networks",
+            "name": "Barracuda",
+            "regex": "\\bbarracuda_|barra_counter_session=",
+            "signatures": []
+        },
+        "binarysec": {
+            "company": "BinarySEC",
+            "name": "BinarySEC",
+            "regex": "Server: BinarySec|x-binarysec-",
+            "signatures": []
+        },
+        "bluedon": {
+            "company": "Bluedon Information Security Technology",
+            "name": "Bluedon",
+            "regex": "Bluedon Web Application Firewall|Server: BDWAF",
+            "signatures": []
+        },
+        "cerber": {
+            "company": "Cerber Tech",
+            "name": "WP Cerber Security",
+            "regex": "We're sorry, you are not allowed to proceed|Your request looks suspicious or similar to automated requests from spam posting software",
+            "signatures": [
+                "d8c2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "cleantalk": {
+            "company": "CleanTalk",
+            "name": "CleanTalk",
+            "regex": "Blocked by Web Application Firewall|Security by CleanTalk",
+            "signatures": []
+        },
+        "cloudbric": {
+            "company": "Cloudbric",
+            "name": "Cloudbric",
+            "regex": "Your request was blocked by Cloudbric",
+            "signatures": [
+                "514d:RVZXum60OEhCWapBYKcPk4JzWOtohM4JiUcMrmRXg1qQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "cloudflare": {
+            "company": "CloudFlare",
+            "name": "CloudFlare",
+            "regex": "Attention Required! \\| Cloudflare|CLOUDFLARE_ERROR_",
+            "signatures": [
+                "4849:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "675a:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+            ]
+        },
+        "cloudfront": {
+            "company": "Amazon",
+            "name": "CloudFront",
+            "regex": "Generated by cloudfront",
+            "signatures": [
+                "34a8:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhdOn9htOj+hXrAB16BcPxJOdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "comodo": {
+            "company": "Comodo",
+            "name": "Comodo",
+            "regex": "Server: Protected by COMODO WAF",
+            "signatures": [
+                "ade8:RVZXum60OEhCWapAYKYPkoJzWOpohc4IiUYMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD"
+            ]
+        },
+        "crawlprotect": {
+            "company": "Jean-Denis Brun",
+            "name": "CrawlProtect",
+            "regex": "<title>CrawlProtect|This site is protected by CrawlProtect",
+            "signatures": [
+                "2e26:RVZXum60OEhCWKpBYKYPkoJzWOpohM4IiUYMrmRXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "distil": {
+            "company": "Distil Networks",
+            "name": "Distil",
+            "regex": "distilCaptchaForm|distilCallbackGuard|cdn\\.distilnetworks\\.com/images/anomaly-detected\\.png",
+            "signatures": []
+        },
+        "dotdefender": {
+            "company": "Applicure Technologies",
+            "name": "dotDefender",
+            "regex": "dotDefender Blocked Your Request|Applicure is the leading provider of web application security|Please contact the site administrator, and provide the following Reference ID",
+            "signatures": [
+                "7cce:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "expressionengine": {
+            "company": "EllisLab",
+            "name": "ExpressionEngine",
+            "regex": "(?s)\\bexp_last_.+?(Invalid GET Data|Invalid URI)",
+            "signatures": [
+                "88ec:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUcMrmRWg1qQJbX3uhZOnthsOj6hX7AA16FcPxJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chS1XKTC"
+            ]
+        },
+        "fortiweb": {
+            "company": "Fortinet",
+            "name": "FortiWeb",
+            "regex": "Server Unavailable!",
+            "signatures": [
+                "9d05:RVZXu261OElCWapBYKcPk4JzWOtohM4IiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD"
+            ]
+        },
+        "godaddy": {
+            "company": "GoDaddy Inc.",
+            "name": "GoDaddy",
+            "regex": "GoDaddy Security - Access Denied|Access Denied - GoDaddy Website Firewall",
+            "signatures": [
+                "6cff:RVdXum60OEhCWapAYKYPk4JzWOtohM4IiUYMr2RWg1uQJbX3uhdOn9htOj+hXrAA16FcPxJOdLoXomtKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "imunify360": {
+            "company": "CloudLinux Inc.",
+            "name": "Imunify360",
+            "regex": "protected by Imunify360|Powered by Imunify360|imunify360 preloader",
+            "signatures": []
+        },
+        "incapsula": {
+            "company": "Incapsula/Imperva",
+            "name": "Incapsula",
+            "regex": "Incapsula incident ID|\\?subject=WAF Block Page:|If you feel you have been blocked in error, please contact Customer Support",
+            "signatures": [
+                "2770:RVZXum60OEhCWKpAYKYPkoJzWOpohc4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
+                "3193:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZnxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "isaserver": {
+            "company": "Microsoft",
+            "name": "ISA Server",
+            "regex": "The ISA Server denied the specified Uniform Resource Locator \\(URL\\)|The server denied the specified Uniform Resource Locator \\(URL\\)",
+            "signatures": []
+        },
+        "jiasule": {
+            "company": "Jiasule",
+            "name": "Jiasule",
+            "regex": "Server: jiasule-WAF|notice-jiasule|static\\.jiasule\\.com/static/js/http_error\\.js",
+            "signatures": [
+                "7520:RVZXum61OElCWapAYKYPk4JzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtBeq+c36A5chW1XaTD",
+                "001e:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtTtAeq+c36A5chW1XaTC"
+            ]
+        },
+        "knownsec": {
+            "company": "Knownsec",
+            "name": "KS-WAF",
+            "regex": "url\\('/ks-waf-error\\.png'\\)",
+            "signatures": []
+        },
+        "kona": {
+            "company": "Akamai Technologies",
+            "name": "KONA",
+            "regex": "(?s)Server: AkamaiGHost.+You don't have permission to access",
+            "signatures": [
+                "165b:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
+                "3426:RVZXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
+                "ea3e:RVZXum60OEhCWKpAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhZOnthsOj6hXrAA16BcPxJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
+                "d41e:RVdXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "94ed:RVZXum60OEhCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "5ca8:RVZXum60OEhCWKpAYKYPkoJzWOtohM4IiUYMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "cc5b:RVZXum60OEhCWKpAYKYPkoJzWOtohM4IiUYMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "e7d9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "bd78:RVZXum60OEhCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "6cbc:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "a40d:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "7e0b:RVZXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "e197:RVZXum60OEhCWKpAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
+                "b996:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "1f03:RVZXum60OEhCWapBYKYPk4JzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "e120:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "d341:RVZXum61OElCWapBYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "7ae5:RVZXum60OEhCWKpAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "6bf2:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "1db3:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC"
+            ]
+        },
+        "malcare": {
+            "company": "Inactiv.com Media Solutions Pvt Ltd.",
+            "name": "MalCare",
+            "regex": "Blocked because of Malicious Activities|Firewall(<[^>]+>)*powered by(<[^>]+>)*MalCare",
+            "signatures": [
+                "def2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "modsecurity": {
+            "company": "Trustwave",
+            "name": "ModSecurity",
+            "regex": "This error was generated by Mod_Security|One or more things in your request were suspicious|rules of the mod_security module|Protected by Mod Security",
+            "signatures": [
+                "76d6:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "46d5:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "511d:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "f694:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "51ca:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJOdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "e18b:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hX7AB16FcPhJOdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "6e99:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "dd72:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "f53e:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "e15c:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "fc75:RVZXum61OEhCWapBYKcPk4JzWOpohc4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq6c36A4chW1XaTD",
+                "ded8:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hXrAB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "6e99:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "7986:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJOdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "b4e2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4VmkwI3FZjxtDtAeq6c36A4chW1XaTD",
+                "02b2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "4602:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJOdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "e274:RVdXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A4chW1XaTD",
+                "b1a2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "5e9a:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "35c4:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XKTC"
+            ]
+        },
+        "naxsi": {
+            "company": "NBS System",
+            "name": "NAXSI",
+            "regex": "naxsi/waf",
+            "signatures": []
+        },
+        "netcontinuum": {
+            "company": "NetContinuum/Barracuda Networks",
+            "name": "NetContinuum",
+            "regex": "NCI__SessionId=",
+            "signatures": []
+        },
+        "newdefend": {
+            "company": "Newdefend",
+            "name": "Newdefend",
+            "regex": "Server: NewDefend|/nd_block/",
+            "signatures": []
+        },
+        "ninjafirewall": {
+            "company": "NinTechNet",
+            "name": "NinjaFirewall",
+            "regex": "<title>NinjaFirewall: 403 Forbidden|For security reasons, it was blocked and logged",
+            "signatures": [
+                "2c12:RVZXum60OEhCWapBYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9hsOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtBeq+c3qA4chW1XaTC"
+            ]
+        },
+        "nsfocus": {
+            "company": "NSFOCUS",
+            "name": "NSFOCUS",
+            "regex": "Server: NSFocus",
+            "signatures": []
+        },
+        "onmessageshield": {
+            "company": "Blackbaud",
+            "name": "onMessage Shield",
+            "regex": "This site is protected by an enhanced security system to ensure a safe browsing experience|onMessage SHIELD",
+            "signatures": [
+                "125a:RVdXum61OElCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A5chW1XaTC"
+            ]
+        },
+        "paloalto": {
+            "company": "Palo Alto Networks",
+            "name": "Palo Alto",
+            "regex": "has been blocked in accordance with company policy|Palo Alto Next Generation Security Platform",
+            "signatures": [
+                "862a:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj+hXrAA16BcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC",
+                "5fe6:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMrmRWg1uQJLX2uhZOnthsOj+hXrAA16BcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC",
+                "cffd:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj+hXrAA16BcPhJPdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC",
+                "1427:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "fa37:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "radware": {
+            "company": "Radware",
+            "name": "AppWall",
+            "regex": "Unauthorized Request Blocked|You are seeing this page because we have detected unauthorized activity",
+            "signatures": [
+                "e68e:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZnxtDtAeq+c36A5chW1XaTD",
+                "2613:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtAeq+c36A5chW1XaTD",
+                "8fc4:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI3FZnxtDtAeq+c36A5chW1XaTD"
+            ]
+        },
+        "reblaze": {
+            "company": "Reblaze",
+            "name": "Reblaze",
+            "regex": "For further information, do not hesitate to contact us",
+            "signatures": [
+                "86fb:RVZXum61OElCWKpAYKcPkoJzWOtohM4JiUcMr2RXg1uQJbX3uhdOnthsOj6hXrAB16BcPhJPdLoXo2tLaK99n+i7c4RmkgI2FZjxtDtBeq+c36A5chW1XaTD"
+            ]
+        },
+        "requestvalidationmode": {
+            "company": "Microsoft",
+            "name": "ASP.NET RequestValidationMode",
+            "regex": "HttpRequestValidationException|Request Validation has detected a potentially dangerous client input value|ASP\\.NET has detected data in the request that is potentially dangerous",
+            "signatures": [
+                "7ecd:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
+                "551e:RVdXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhdOn9htOj+hXrAB16FcPxJOdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chS1XaTC",
+                "d762:RVdXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1qQJLX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
+                "919b:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTD"
+            ]
+        },
+        "rsfirewall": {
+            "company": "RSJoomla!",
+            "name": "RSFirewall",
+            "regex": "COM_RSFIREWALL_",
+            "signatures": [
+                "d829:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
+            ]
+        },
+        "safe3": {
+            "company": "",
+            "name": "Safe3",
+            "regex": "Server: Safe3 Web Firewall|Safe3waf/",
+            "signatures": []
+        },
+        "safedog": {
+            "company": "Safedog",
+            "name": "Safedog",
+            "regex": "Server: Safedog|safedogsite/broswer_logo\\.jpg|404\\.safedog\\.cn/sitedog_stat\\.html",
+            "signatures": [
+                "0ee1:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
+            ]
+        },
+        "secureentry": {
+            "company": "United Security Providers",
+            "name": "Secure Entry Server",
+            "regex": "Server: Secure Entry Server",
+            "signatures": [
+                "6249:RVZXum60OEhCWKpAYKYPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "secureiis": {
+            "company": "BeyondTrust",
+            "name": "SecureIIS Web Server Security",
+            "regex": "//www\\.eeye\\.com/SecureIIS/|\\?subject=[^>]*SecureIIS Error|SecureIIS[^<]+Web Server Protection",
+            "signatures": []
+        },
+        "shieldsecurity": {
+            "company": "One Dollar Plugin",
+            "name": "Shield Security",
+            "regex": "Something in the URL, Form or Cookie data wasn't appropriate",
+            "signatures": [
+                "e41d:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
+                "389c:RVZXum61OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
+            ]
+        },
+        "siteground": {
+            "company": "SiteGround",
+            "name": "SiteGround",
+            "regex": "The page you are trying to access is restricted due to a security rule",
+            "signatures": [
+                "da25:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XKTC",
+                "1086:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
+                "6ef2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XKTC",
+                "298e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJbX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "3363:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hX7AA16FcPxJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
+                "2720:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hX7AA16FcPxJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+            ]
+        },
+        "siteguard": {
+            "company": "JP-Secure",
+            "name": "SiteGuard",
+            "regex": "Powered by SiteGuard|The server refuse to browse the page",
+            "signatures": [
+                "6e49:RVZXum61OElCWapBYKcPk4JzWOtohM4JiUYMr2RWg1qQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "sitelock": {
+            "company": "SiteLock",
+            "name": "TrueShield",
+            "regex": "SiteLock Incident ID|<span class=\\\"value INCIDENT_ID\\\">",
+            "signatures": []
+        },
+        "sonicwall": {
+            "company": "Dell",
+            "name": "SonicWALL",
+            "regex": "Server: SonicWALL|(?s)<title>Web Site Blocked</title>.+#nsa_banner",
+            "signatures": [
+                "f85c:RVZXum61OElCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1qQJLX2uhZOnthsOj+hX7AA16FcPxJPdLoXo2tLaK99nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
+            ]
+        },
+        "sophos": {
+            "company": "Sophos",
+            "name": "UTM Web Protection",
+            "regex": "Powered by UTM Web Protection",
+            "signatures": []
+        },
+        "squarespace": {
+            "company": "Squarespace",
+            "name": "Squarespace",
+            "regex": "(?s) @ .+BRICK-50",
+            "signatures": [
+                "b012:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+            ]
+        },
+        "stackpath": {
+            "company": "StackPath LLC",
+            "name": "StackPath",
+            "regex": "You performed an action that triggered the service and blocked your request",
+            "signatures": [
+                "5ab0:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUYMr2RWg1uQJbX2uhdOn9hsOj+hXrAA16FcPhJOdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
+                "7e0a:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUYMr2RWg1uQJbX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
+            ]
+        },
+        "sucuri": {
+            "company": "Sucuri",
+            "name": "CloudProxy",
+            "regex": "Server: Sucuri/Cloudproxy|Access Denied - Sucuri Website Firewall|Sucuri WebSite Firewall - CloudProxy - Access Denied|Questions\\?.+cloudproxy@sucuri\\.net",
+            "signatures": [
+                "60a9:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI2FZjxtDtAeq+c36A5chW1XaTC"
+            ]
+        },
+        "tencent": {
+            "company": "Tencent Cloud Computing",
+            "name": "Tencent Cloud",
+            "regex": "waf\\.tencent-cloud\\.com",
+            "signatures": []
+        },
+        "teros": {
+            "company": "Teros/Citrix Systems",
+            "name": "Teros/Citrix",
+            "regex": "Set-Cookie:.*st8(id|_wat|_wlf)",
+            "signatures": []
+        },
+        "trafficshield": {
+            "company": "F5 Networks",
+            "name": "TrafficShield",
+            "regex": "Server:.*F5-TrafficShield",
+            "signatures": []
+        },
+        "urlmaster": {
+            "company": "iFinity/DotNetNuke",
+            "name": "Url Master SecurityCheck",
+            "regex": "UrlMaster\\.UrlRewriteModule\\.SecurityCheck",
+            "signatures": []
+        },
+        "urlscan": {
+            "company": "Microsoft",
+            "name": "UrlScan",
+            "regex": "Rejected-By-UrlScan",
+            "signatures": [
+                "0294:RVdXum60OEhCWKpAYKYPk4JyWOpohM4IiUYMrmRXg1qQJLX2uhdOn9htOj+hXrAB16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
+            ]
+        },
+        "varnish": {
+            "company": "OWASP",
+            "name": "Varnish",
+            "regex": "Request rejected by xVarnish-WAF",
+            "signatures": []
+        },
+        "virusdie": {
+            "company": "Virusdie LLC",
+            "name": "Virusdie",
+            "regex": "Virusdie</title>|http://cdn\\.virusdie\\.ru/splash/firewallstop\\.png|<meta name=\\\"FW_BLOCK\\\"",
+            "signatures": []
+        },
+        "wallarm": {
+            "company": "Wallarm",
+            "name": "Wallarm",
+            "regex": "Server: nginx-wallarm",
+            "signatures": [
+                "c02b:RVZXu261OElCWapBYKcPk4JzWOpohM4JiUcMr2RWg1uQJbX3uhdOnthsOj+hXrAB16FcPxJOdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
+        },
+        "watchguard": {
+            "company": "WatchGuard Technologies",
+            "name": "WatchGuard",
+            "regex": "Server: WatchGuard|Request denied by WatchGuard Firewall",
+            "signatures": [
+                "4f4f:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj+hXrAA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
+                "2a3c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhZOnthsOj+hX7AA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
+            ]
+        },
+        "webknight": {
+            "company": "AQTRONIX",
+            "name": "WebKnight",
+            "regex": "HTTP/1.+\\b999\\b|WebKnight Application Firewall Alert|AQTRONIX WebKnight",
+            "signatures": [
+                "80f9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
+        "wordfence": {
+            "company": "Feedjit",
+            "name": "Wordfence",
+            "regex": "A potentially unsafe operation has been detected in your request to this site|Generated by Wordfence|Your access to this site has been limited|This response was generated by Wordfence",
+            "signatures": [
+                "bf67:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "d04a:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "09cf:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtBeq6c3qA4chW1XaTC",
+                "043e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "8c44:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "1834:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTC",
+                "d38c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkwI3FZjxtDtAeq6c3qA4chW1XaTC",
+                "d5bb:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "9da2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJbX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "7081:RVZXum60OEhCWapAYKYPkoJyWOpohc4JiUYMr2RXg1uQJbX2uhdOnthtOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTC",
+                "3f1c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
+                "dbfe:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA5chW1XaTC",
+                "5b85:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTD"
+            ]
+        },
+        "yundun": {
+            "company": "Yundun",
+            "name": "Yundun",
+            "regex": "Blocked by YUNDUN Cloud WAF|yundun\\.com/yd_http_error/",
+            "signatures": [
+                "4853:RVZXum61OEhCWapBYKcPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
+            ]
+        },
+        "yunsuo": {
+            "company": "Yunsuo",
+            "name": "Yunsuo",
+            "regex": "yunsuo_session|<img class=\\\"yunsuologo\\\"",
+            "signatures": []
+        },
+        "zenedge": {
+            "company": "Zenedge",
+            "name": "Zenedge",
+            "regex": "Server: ZENEDGE|/__zenedge/assets/",
+            "signatures": []
+        }
+    }
+}
