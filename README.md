@@ -27,7 +27,7 @@ l    j|   \    /  _]|    \ |      T|  |  ||  T__T  T /    T|   __|
  |  T |    \  /  [_ |  _  Yl_j  l_j|  ~  ||  |  |  |Y  o  ||  l_
  |  | |  D  YY    _]|  |  |  |  |  |___  ||  |  |  ||     ||   _|
  j  l |     ||   [_ |  |  |  |  |  |     ! \      / |  |  ||  ] 
-|____jl_____jl_____jl__j__j  l__j  l____/   \_/\_/  l__j__jl__j  (1.0.4)
+|____jl_____jl_____jl__j__j  l__j  l____/   \_/\_/  l__j__jl__j  (1.0.X)
 
 Usage: python identYwaf.py [options] <host|url>
 
