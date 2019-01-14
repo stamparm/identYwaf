@@ -4,6 +4,8 @@
 
 **identYwaf** is an identification tool that can recognize web protection type (i.e. WAF) based on blind inference. Blind inference is being done by inspecting responses provoked by a set of predefined offensive (non-destructive) payloads, where those are used only to trigger the web protection system in between (e.g. `http://<host>?aeD0oowi=1 AND 2>1`). Currently it supports more than 60 different protection products (e.g. `aeSecure`, `Airlock`, `CleanTalk`, `CrawlProtect`, `Imunify360`, `MalCare`, `ModSecurity`, `Palo Alto`, `SiteGuard`, `UrlScan`, `Wallarm`, `WatchGuard`, `Wordfence`, etc.), while the knowledge-base is constantly growing.
 
+![screenshot](https://i.imgur.com/tSOAgnn.png)
+
 ## Usage
 
 ```
@@ -25,9 +27,6 @@ Options:
   --timeout=TIMEOUT  Response timeout (sec) (default: 10)
   --proxy=PROXY      HTTP proxy address (e.g. "http://127.0.0.1:8080")
 ```
-
-## Screenshot
-![screenshot](https://i.imgur.com/tSOAgnn.png)
 
 ## Installation
 
