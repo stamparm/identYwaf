@@ -259,6 +259,14 @@
             "regex": "The ISA Server denied the specified Uniform Resource Locator \\(URL\\)|The server denied the specified Uniform Resource Locator \\(URL\\)",
             "signatures": []
         },
+        "janusec": {
+            "company": "Janusec",
+            "name": "Janusec Application Gateway",
+            "regex": "Reason:.+by Janusec Application Gateway",
+            "signatures": [
+                "5c5d:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXo2tLaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC"
+            ]
+        },
         "jiasule": {
             "company": "Jiasule",
             "name": "Jiasule",
