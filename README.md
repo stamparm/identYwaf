@@ -6,6 +6,17 @@
 
 ![screenshot](https://i.imgur.com/tSOAgnn.png)
 
+
+## Installation
+
+You can download the latest zipball by clicking [here](https://github.com/stamparm/identYwaf/archive/master.zip).
+
+Preferably, you can download identYwaf by cloning the Git repository:
+
+git clone --depth 1 https://github.com/stamparm/identYwaf.git
+
+identYwaf works out of the box with Python version **2.6.x** and **2.7.x** on any platform.
+
 ## Usage
 
 ```
@@ -27,13 +38,3 @@ Options:
   --timeout=TIMEOUT  Response timeout (sec) (default: 10)
   --proxy=PROXY      HTTP proxy address (e.g. "http://127.0.0.1:8080")
 ```
-
-## Installation
-
-You can download the latest zipball by clicking [here](https://github.com/stamparm/identYwaf/archive/master.zip).
-
-Preferably, you can download identYwaf by cloning the Git repository:
-
-git clone --depth 1 https://github.com/stamparm/identYwaf.git
-
-identYwaf works out of the box with Python version **2.6.x** and **2.7.x** on any platform.
