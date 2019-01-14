@@ -28,7 +28,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.15"
+VERSION = "1.0.16"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -41,7 +41,7 @@ l    j|   \    /  _]|    \ |      T`|  |  |`|  T__T  T /    T|   __|
 RAW, TEXT, HTTPCODE, TITLE, HTML, URL = xrange(6)
 COOKIE, UA, REFERER = "Cookie", "User-Agent", "Referer"
 GET, POST = "GET", "POST"
-GENERIC_PROTECTION_KEYWORDS = ('rejected', 'forbidden', 'suspicious', 'malicious', 'captcha', 'invalid', 'your ip', 'please contact', 'terminated', 'protected', 'blocked', 'protection', 'incident', 'denied', 'detected', 'dangerous', 'firewall', 'fw_block', 'unusual activity', 'bad request', 'request id')
+GENERIC_PROTECTION_KEYWORDS = ('rejected', 'forbidden', 'suspicious', 'malicious', 'captcha', 'invalid', 'your ip', 'please contact', 'terminated', 'protected', 'unauthorized', 'blocked', 'protection', 'incident', 'denied', 'detected', 'dangerous', 'firewall', 'fw_block', 'unusual activity', 'bad request', 'request id', 'injection', 'permission', 'not acceptable', 'security policy', 'security reasons')
 GENERIC_PROTECTION_REGEX = r"(?i)\b(%s)\b"
 GENERIC_ERROR_MESSAGE_REGEX = r"\b[A-Z][\w, '-]*(protected by|security|unauthorized|detected|attack|error|rejected|allowed|suspicious|automated|blocked|invalid|denied|permission)[\w, '!-]*"
 HEURISTIC_PAYLOAD = "1 AND 1=1 UNION ALL SELECT 1,NULL,'<script>alert(\"XSS\")</script>',table_name FROM information_schema.tables WHERE 2>1--/**/; EXEC xp_cmdshell('cat ../../../etc/passwd')#"
@@ -116,7 +116,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     time.sleep(options.delay or 0)
     _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.letters, 3)), urllib.quote(payload))
     intrusive = retrieve(_)
-    result = intrusive[HTTPCODE] != original[HTTPCODE] or intrusive[TITLE] != original[TITLE] or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None)
+    result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None)
     return result
 
 def colorize(message):
