@@ -77,7 +77,8 @@
             "name": "Anquanbao",
             "regex": "/aqb_cc/error/",
             "signatures": [
-                "c790:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9hsOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+                "c790:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9hsOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "d3d3:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9hsOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
             ]
         },
         "approach": {
@@ -567,7 +568,7 @@
         },
         "sucuri": {
             "company": "Sucuri",
-            "name": "CloudProxy",
+            "name": "Sucuri",
             "regex": "Server: Sucuri/Cloudproxy|Access Denied - Sucuri Website Firewall|Sucuri WebSite Firewall - CloudProxy - Access Denied|Questions\\?.+cloudproxy@sucuri\\.net",
             "signatures": [
                 "60a9:RVZXum61OElCWapAYKYPk4JzWOpohM4JiUYMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI2FZjxtDtAeq+c36A5chW1XaTC"
