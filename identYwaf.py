@@ -28,7 +28,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.10"
+VERSION = "1.0.11"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -297,7 +297,7 @@ def run():
 
     signature = "%s:%s" % (calc_hash(signature).encode("hex"), base64.b64encode(signature))
 
-    print colorize("\n[=] results: '%s'" % results)
+    print colorize("%s[=] results: '%s'" % ("\n" if IS_TTY else "", results))
 
     hardness = 100 * results.count('x') / len(results)
     print colorize("[=] hardness: %s (%d%%)" % ("insane" if hardness >= 80 else ("hard" if hardness >= 50 else ("moderate" if hardness >= 30 else "easy")), hardness))
