@@ -252,7 +252,7 @@
         "greywizard": {
             "company": "Grey Wizard",
             "name": "Greywizard",
-            "regex": "(?i)server: greywizard|We’ve detected attempted attack or non standard traffic from your IP address|<title>Grey Wizard</title>",
+            "regex": "(?i)server: greywizard|detected attempted attack or non standard traffic from your IP address|<title>Grey Wizard</title>",
             "signatures": [
                 "c669:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOnthsOj+hX7AB16FcPhJPdLsXomtKaK59nui7c4RmkwI2FZjxtDtAeq+c3qA5chW1XaTC"
             ]
