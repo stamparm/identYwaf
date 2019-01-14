@@ -324,7 +324,9 @@
                 "d341:RVZXum61OElCWapBYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "7ae5:RVZXum60OEhCWKpAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "6bf2:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
-                "1db3:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC"
+                "1db3:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
+                "afe5:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "fcbb:RVZXum60OEhCWapAYKYPkoJzWOtohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
             ]
         },
         "malcare": {
@@ -361,7 +363,8 @@
                 "b1a2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "5e9a:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "35c4:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XKTC",
-                "c697:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhZOnthtOj+hX7AB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD"
+                "c697:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhZOnthtOj+hX7AB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "85e3:RVZXum60OElCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD"
             ]
         },
         "naxsi": {
@@ -375,6 +378,14 @@
             "name": "NetContinuum",
             "regex": "NCI__SessionId=",
             "signatures": []
+        },
+        "netscaler": {
+            "company": "Citrix",
+            "name": "NetScaler AppFirewall",
+            "regex": "<title>Application Firewall Block Page</title>|Violation Category: APPFW_|AppFW Session ID|Access has been blocked - if you feel this is in error, please contact the site administrators quoting the following",
+            "signatures": [
+                "9c6c:RVdXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMrmRWg1qQJbX3uhdOn9hsOj6hXrAA16BcPhJOdLsXo2tKaK99n+i6c4RmkgI2FZnxtDtAeq6c3qA4chS1XKTC"
+            ]
         },
         "newdefend": {
             "company": "Newdefend",
