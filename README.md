@@ -2,7 +2,7 @@
 
 [![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-yellow.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/stamparm/identYwaf/blob/master/LICENSE)
 
-**identYwaf** is an identification tool that can recognize web protection type (i.e. WAF) based on blind inference. Blind inference is being done based on responses created by a set of predefined offensive payloads, where those are used only to provoke the web protection system in between. Currently it supports more than 60 different protection products (e.g. `aeSecure`, `Airlock`, `CleanTalk`, `CrawlProtect`, `Imunify360`, `MalCare`, `ModSecurity`, `Palo Alto`, `SiteGuard`, `UrlScan`, `Wallarm`, `WatchGuard`, `Wordfence`, etc.), while the knowledge-base is constantly growing. It has been created as part of an independent research done while working on [sqlmap](https://github.com/sqlmapproject/sqlmap/).
+**identYwaf** is an identification tool that can recognize web protection type (i.e. WAF) based on blind inference. Blind inference is being done by inspecting responses provoked by a set of predefined offensive (non-destructive) payloads, where those are used only to trigger the web protection system in between (e.g. `http://<host>?aeD0oowi=1 AND 2>1`). Currently it supports more than 60 different protection products (e.g. `aeSecure`, `Airlock`, `CleanTalk`, `CrawlProtect`, `Imunify360`, `MalCare`, `ModSecurity`, `Palo Alto`, `SiteGuard`, `UrlScan`, `Wallarm`, `WatchGuard`, `Wordfence`, etc.), while the knowledge-base is constantly growing.
 
 ## Usage
 
@@ -28,3 +28,13 @@ Options:
 
 ## Screenshot
 ![screenshot](https://i.imgur.com/tSOAgnn.png)
+
+## Installation
+
+You can download the latest zipball by clicking [here](https://github.com/stamparm/identYwaf/archive/master.zip).
+
+Preferably, you can download identYwaf by cloning the Git repository:
+
+git clone --depth 1 https://github.com/stamparm/identYwaf.git
+
+identYwaf works out of the box with Python version **2.6.x** and **2.7.x** on any platform.
