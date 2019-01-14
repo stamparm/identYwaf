@@ -181,7 +181,9 @@
             "signatures": [
                 "4849:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
                 "675a:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
-                "0b76:RVdXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+                "0b76:RVdXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "956d:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "4a45:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
             ]
         },
         "cloudfront": {
@@ -246,6 +248,14 @@
                 "6cff:RVdXum60OEhCWapAYKYPk4JzWOtohM4IiUYMr2RWg1uQJbX3uhdOn9htOj+hXrAA16FcPxJOdLoXomtKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
+        "greywizard": {
+            "company": "Grey Wizard",
+            "name": "Greywizard",
+            "regex": "(?i)server: greywizard|We’ve detected attempted attack or non standard traffic from your IP address|<title>Grey Wizard</title>",
+            "signatures": [
+                "c669:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOnthsOj+hX7AB16FcPhJPdLsXomtKaK59nui7c4RmkwI2FZjxtDtAeq+c3qA5chW1XaTC"
+            ]
+        },
         "imunify360": {
             "company": "CloudLinux Inc.",
             "name": "Imunify360",
@@ -255,7 +265,7 @@
         "incapsula": {
             "company": "Incapsula/Imperva",
             "name": "Incapsula",
-            "regex": "Incapsula incident ID|\\?subject=WAF Block Page:|If you feel you have been blocked in error, please contact Customer Support",
+            "regex": "Incapsula incident ID",
             "signatures": [
                 "2770:RVZXum60OEhCWKpAYKYPkoJzWOpohc4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
                 "3193:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZnxtDtAeq6c3qA4chS1XKTC"
@@ -350,7 +360,8 @@
                 "e274:RVdXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A4chW1XaTD",
                 "b1a2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "5e9a:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
-                "35c4:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XKTC"
+                "35c4:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XKTC",
+                "c697:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhZOnthtOj+hX7AB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD"
             ]
         },
         "naxsi": {

@@ -28,7 +28,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.12"
+VERSION = "1.0.13"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -245,7 +245,7 @@ def run():
                 print colorize("[+] non-blind match: '%s'" % DATA_JSON["wafs"][waf]["name"])
                 break
 
-        exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '%s')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
+        exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
 
     protection_keywords = GENERIC_PROTECTION_KEYWORDS
     protection_regex = GENERIC_PROTECTION_REGEX % '|'.join(keyword for keyword in protection_keywords if keyword not in original[HTML].lower())
@@ -287,7 +287,7 @@ def run():
                 if not check_payload(str(random.randint(1, 9)), protection_regex):
                     break
                 elif i == VERIFY_RETRY_TIMES - 1:
-                    exit(colorize("[x] host '%s' seems to be (also) rejecting benign requests%s" % (hostname, (" (%d: '%s')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
+                    exit(colorize("[x] host '%s' seems to be (also) rejecting benign requests%s" % (hostname, (" (%d: '<title>%s</title>')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
                 else:
                     time.sleep(5)
 
