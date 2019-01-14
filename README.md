@@ -15,7 +15,7 @@ You can download the latest zipball by clicking [here](https://github.com/stampa
 
 Preferably, you can download identYwaf by cloning the Git repository:
 
-git clone --depth 1 https://github.com/stamparm/identYwaf.git
+`git clone --depth 1 https://github.com/stamparm/identYwaf.git`
 
 identYwaf works out of the box with Python version **2.6.x** and **2.7.x** on any platform.
 
