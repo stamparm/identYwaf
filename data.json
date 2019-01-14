@@ -144,6 +144,15 @@
                 "d8c2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
+        "chuangyu": {
+            "company": "Yunaq",
+            "name": "Chuang Yu Shield",
+            "regex": " \\d+\\.\\d+\\.\\d+\\.\\d+/[0-9a-f]{7} \\[\\d+\\] ",
+            "signatures": [
+                "eda6:RVZXum61OElCWapAYKcPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTC",
+                "5bae:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
+            ]
+        },
         "cleantalk": {
             "company": "CleanTalk",
             "name": "CleanTalk",
