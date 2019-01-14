@@ -2,4 +2,4 @@
 
 Soon&trade;
 
-![screenshot](https://imgur.com/uqhAnen.png)
+![screenshot](https://i.imgur.com/tSOAgnn.png)
