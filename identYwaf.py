@@ -28,7 +28,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.19"
+VERSION = "1.0.20"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -55,6 +55,7 @@ COLORIZE = not subprocess.mswindows and IS_TTY
 LEVEL_COLORS = {"o": "\033[00;94m", "x": "\033[00;91m", "!": "\033[00;93m", "i": "\033[00;95m", "=": "\033[00;93m", "+": "\033[00;92m", "-": "\033[00;91m"}
 VERIFY_OK_INTERVAL = 5
 VERIFY_RETRY_TIMES = 3
+MIN_MATCH_PARTIAL = 5
 DEFAULTS = {"timeout": 10}
 MAX_MATCHES = 5
 
@@ -213,7 +214,7 @@ def init():
 def run():
     global original
 
-    hostname = options.url.split("//")[-1].split('/')[0]
+    hostname = options.url.split("//")[-1].split('/')[0].split(':')[0]
 
     if not hostname.replace('.', "").isdigit():
         print colorize("[i] checking hostname '%s'..." % hostname)
@@ -309,7 +310,7 @@ def run():
 
         if signature in SIGNATURES:
             print colorize("[+] blind match: '%s' (100%%)" % DATA_JSON["wafs"][SIGNATURES[signature]]["name"])
-        elif results.count('x') < 3:
+        elif results.count('x') < MIN_MATCH_PARTIAL:
             print colorize("[-] blind match: -")
         else:
             matches = {}
