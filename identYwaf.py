@@ -213,6 +213,9 @@ def init():
         opener = urllib2.build_opener(urllib2.ProxyHandler({"http": options.proxy, "https": options.proxy}))
         urllib2.install_opener(opener)
 
+def format_name(waf):
+    return "%s%s" % (DATA_JSON["wafs"][waf]["name"], (" (%s)" % DATA_JSON["wafs"][waf]["company"]) if DATA_JSON["wafs"][waf]["name"] != DATA_JSON["wafs"][waf]["company"] else "")
+
 def run():
     global original
 
@@ -245,7 +248,7 @@ def run():
         for waf in DATA_JSON["wafs"]:
             if re.search(DATA_JSON["wafs"][waf]["regex"], original[RAW]):
                 found = True
-                print colorize("[+] non-blind match: '%s%s'" % (DATA_JSON["wafs"][waf]["name"], " (%s)" if DATA_JSON["wafs"][waf]["name"] != DATA_JSON["wafs"][waf]["company"] else ""))
+                print colorize("[+] non-blind match: '%s'" % format_name(waf))
                 break
 
         exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
@@ -272,7 +275,7 @@ def run():
     for waf in DATA_JSON["wafs"]:
         if re.search(DATA_JSON["wafs"][waf]["regex"], intrusive[RAW] if intrusive[HTTPCODE] is not None else original[RAW]):
             found = True
-            print colorize("[+] non-blind match: '%s'" % DATA_JSON["wafs"][waf]["name"])
+            print colorize("[+] non-blind match: '%s'" % format_name(waf))
             break
 
     if not found:
@@ -311,7 +314,8 @@ def run():
         print colorize("[=] signature: '%s'" % signature)
 
         if signature in SIGNATURES:
-            print colorize("[+] blind match: '%s' (100%%)" % DATA_JSON["wafs"][SIGNATURES[signature]]["name"])
+            waf = SIGNATURES[signature]
+            print colorize("[+] blind match: '%s' (100%%)" % format_name(waf))
         elif results.count('x') < MIN_MATCH_PARTIAL:
             print colorize("[-] blind match: -")
         else:
@@ -341,7 +345,7 @@ def run():
             matches = [(_[1], _[0]) for _ in matches.items()]
             matches.sort(reverse=True)
 
-            print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (DATA_JSON["wafs"][matches[i][1]]["name"], matches[i][0]) for i in xrange(MAX_MATCHES if matches[0][0] != 100 else 1)))
+            print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(MAX_MATCHES if matches[0][0] != 100 else 1)))
 
     print
 

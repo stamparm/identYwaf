@@ -139,7 +139,7 @@
             "signatures": []
         },
         "bluedon": {
-            "company": "Bluedon Information Security Technology",
+            "company": "Bluedon",
             "name": "Bluedon",
             "regex": "Bluedon Web Application Firewall|Server: BDWAF",
             "signatures": []
@@ -247,8 +247,8 @@
             ]
         },
         "godaddy": {
-            "company": "GoDaddy Inc.",
-            "name": "GoDaddy",
+            "company": "GoDaddy",
+            "name": "GoDaddy Website Security",
             "regex": "GoDaddy Security - Access Denied|Access Denied - GoDaddy Website Firewall",
             "signatures": [
                 "6cff:RVdXum60OEhCWapAYKYPk4JzWOtohM4IiUYMr2RWg1uQJbX3uhdOn9htOj+hXrAA16FcPxJOdLoXomtKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
@@ -263,7 +263,7 @@
             ]
         },
         "imunify360": {
-            "company": "CloudLinux Inc.",
+            "company": "CloudLinux",
             "name": "Imunify360",
             "regex": "protected by Imunify360|Powered by Imunify360|imunify360 preloader",
             "signatures": []
@@ -339,7 +339,7 @@
             ]
         },
         "malcare": {
-            "company": "Inactiv.com Media Solutions Pvt Ltd.",
+            "company": "Inactiv",
             "name": "MalCare",
             "regex": "Blocked because of Malicious Activities|Firewall(<[^>]+>)*powered by(<[^>]+>)*MalCare",
             "signatures": [
@@ -438,7 +438,7 @@
             ]
         },
         "perimeterx": {
-            "company": "PerimeterX, Inc.",
+            "company": "PerimeterX,",
             "name": "PerimeterX",
             "regex": "https://www.perimeterx.com/whywasiblocked",
             "signatures": []
@@ -483,7 +483,7 @@
             ]
         },
         "safe3": {
-            "company": "",
+            "company": "Safe3",
             "name": "Safe3",
             "regex": "Server: Safe3 Web Firewall|Safe3waf/",
             "signatures": []
@@ -570,7 +570,7 @@
             ]
         },
         "stackpath": {
-            "company": "StackPath LLC",
+            "company": "StackPath",
             "name": "StackPath",
             "regex": "You performed an action that triggered the service and blocked your request",
             "signatures": [
