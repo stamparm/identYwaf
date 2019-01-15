@@ -10,6 +10,7 @@ all copies or substantial portions of the Software.
 
 import base64
 import cookielib
+import difflib
 import httplib
 import json
 import optparse
@@ -28,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.21"
+VERSION = "1.0.22"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -58,6 +59,7 @@ VERIFY_RETRY_TIMES = 3
 MIN_MATCH_PARTIAL = 5
 DEFAULTS = {"timeout": 10}
 MAX_MATCHES = 5
+QUICK_RATIO_THRESHOLD = 0.2
 
 if COLORIZE:
     for _ in re.findall(r"`.+?`", BANNER):
@@ -117,7 +119,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     time.sleep(options.delay or 0)
     _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.letters, 3)), urllib.quote(payload))
     intrusive = retrieve(_)
-    result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None)
+    result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD)
     return result
 
 def colorize(message):
