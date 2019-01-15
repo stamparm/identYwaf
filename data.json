@@ -105,6 +105,7 @@
                 "2f81:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtDtAeq+c36A4chS1XaTC",
                 "4fd0:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC",
                 "14fa:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOn9htOj+hXrAA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XaTC",
+                "5904:RVZXum60OEhCWapBYKcPk4JzWOpohc4IiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq+c3qA4chS1XaTC",
                 "8bcf:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq6c36A5chS1XaTC",
                 "ce66:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XKTC"
             ]
@@ -116,7 +117,8 @@
             "signatures": [
                 "2998:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
                 "fffa:RVZXum60OEhCWapAYKYPk4JyWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
-                "9de0:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthtOj+hXrAA16BcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "9de0:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthtOj+hXrAA16BcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "326d:RVZXum60OElCWapAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hX7AA16FcPhJOdLsXomtLaK59nui7c4RmkgI2FZjxtDtAeq6c3qA5chS1XaTC"
             ]
         },
         "barracuda": {
@@ -185,7 +187,12 @@
                 "675a:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
                 "0b76:RVdXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
                 "956d:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
-                "4a45:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
+                "4a45:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
+                "06c9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1uQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "d652:RVdXum60OEhCWapBYKcPkoJzWOpohM4IiUcMrmRWg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "6b42:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "b1b8:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "1f29:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
             ]
         },
         "cloudfront": {
@@ -328,7 +335,10 @@
                 "6bf2:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "1db3:RVZXum60OEhCWKpAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
                 "afe5:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
-                "fcbb:RVZXum60OEhCWapAYKYPkoJzWOtohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+                "fcbb:RVZXum60OEhCWapAYKYPkoJzWOtohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "d1b6:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "4c95:RVZXum60OEhCWapBYKcPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
+                "8b30:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
             ]
         },
         "malcare": {
@@ -426,7 +436,8 @@
                 "5fe6:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMrmRWg1uQJLX2uhZOnthsOj+hXrAA16BcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC",
                 "cffd:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj+hXrAA16BcPhJPdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC",
                 "1427:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
-                "fa37:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "fa37:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "9135:RVZXum60OEhCWapAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX3uhZOnthsOj+hXrAA16BcPhJOdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC"
             ]
         },
         "perimeterx": {
@@ -483,7 +494,8 @@
             "name": "Safedog",
             "regex": "Server: Safedog|safedogsite/broswer_logo\\.jpg|404\\.safedog\\.cn/sitedog_stat\\.html",
             "signatures": [
-                "0ee1:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
+                "0ee1:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
+                "38e9:RVdXu261OElCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPxJOdLsXo2tKaK99n+i7c4VmkgI2FZjxtDtAeq+c36A4chW1XaTD"
             ]
         },
         "secureentry": {
@@ -633,7 +645,8 @@
             "regex": "Server: WatchGuard|Request denied by WatchGuard Firewall",
             "signatures": [
                 "4f4f:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj+hXrAA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
-                "2a3c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhZOnthsOj+hX7AA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
+                "2a3c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhZOnthsOj+hX7AA16FcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
+                "aa64:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhZOnthsOj+hX7AA16FcPhJOdLoXomtKaK59nui7c4RmkgI3FZjxtDtAeq+c3qA4chW1XaTC"
             ]
         },
         "webknight": {
