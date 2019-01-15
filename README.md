@@ -6,8 +6,14 @@
 
 Also, as part of this project, [screenshots](https://github.com/stamparm/identYwaf/tree/master/screenshots) of characteristic responses for different web protection systems are being gathered (manually) for the future reference.
 
-![screenshot](https://i.imgur.com/tSOAgnn.png)
+## Screenshots
 
+![](https://i.imgur.com/tSOAgnn.png)
+![](https://imgur.com/FJchQI0.png)
+![](https://imgur.com/RqQdVJJ.png)
+![](https://imgur.com/weHTSv9.png)
+![](https://imgur.com/UKW2cRs.png)
+![](https://imgur.com/20cd08y.png)
 
 ## Installation
 
