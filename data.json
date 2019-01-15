@@ -548,13 +548,13 @@
         "sitelock": {
             "company": "SiteLock",
             "name": "TrueShield",
-            "regex": "SiteLock Incident ID|<span class=\\\"value INCIDENT_ID\\\">",
+            "regex": "SiteLock Incident ID|SiteLock will remember you and will not show this page again|<span class=\\\"value INCIDENT_ID\\\">",
             "signatures": []
         },
         "sonicwall": {
             "company": "Dell",
             "name": "SonicWALL",
-            "regex": "Server: SonicWALL|(?s)<title>Web Site Blocked</title>.+#nsa_banner",
+            "regex": "Server: SonicWALL|(?s)<title>Web Site Blocked</title>.+nsa_banner",
             "signatures": [
                 "f85c:RVZXum61OElCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1qQJLX2uhZOnthsOj+hX7AA16FcPxJPdLoXo2tLaK99nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
             ]
