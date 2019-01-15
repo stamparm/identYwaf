@@ -8,11 +8,18 @@ Also, as part of this project, [screenshots](https://github.com/stamparm/identYw
 
 ## Screenshots
 
+![](https://imgur.com/AZVi9vB.png)
+
 ![](https://i.imgur.com/tSOAgnn.png)
+
 ![](https://imgur.com/FJchQI0.png)
+
 ![](https://imgur.com/RqQdVJJ.png)
+
 ![](https://imgur.com/weHTSv9.png)
+
 ![](https://imgur.com/UKW2cRs.png)
+
 ![](https://imgur.com/20cd08y.png)
 
 ## Installation
