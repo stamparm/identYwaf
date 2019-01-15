@@ -85,7 +85,9 @@
             "company": "Approach",
             "name": "Approach",
             "regex": "If this was an legitimate request please contact us with details!|Approach.+?Web Application Firewall",
-            "signatures": []
+            "signatures": [
+                "fef0:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XKTD"
+            ]
         },
         "armor": {
             "company": "Armor Defense",
@@ -104,7 +106,8 @@
                 "2f81:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtDtAeq+c36A4chS1XaTC",
                 "4fd0:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC",
                 "5904:RVZXum60OEhCWapBYKcPk4JzWOpohc4IiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq+c3qA4chS1XaTC",
-                "8bcf:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq6c36A5chS1XaTC"
+                "8bcf:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq6c36A5chS1XaTC",
+                "540f:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq+c36A5chS1XaTC"
             ]
         },
         "aws": {
@@ -123,7 +126,8 @@
             "name": "Barracuda",
             "regex": "\\bbarracuda_|barra_counter_session=|when this page occurred and the event ID found at the bottom of the page",
             "signatures": [
-                "2676:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RWg1qQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC"
+                "2676:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RWg1qQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC",
+                "db27:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RWg1qQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
             ]
         },
         "binarysec": {
@@ -598,12 +602,6 @@
             "regex": "Set-Cookie:.*st8(id|_wat|_wlf)",
             "signatures": []
         },
-        "trafficshield": {
-            "company": "F5 Networks",
-            "name": "TrafficShield",
-            "regex": "Server:.*F5-TrafficShield",
-            "signatures": []
-        },
         "urlmaster": {
             "company": "iFinity/DotNetNuke",
             "name": "Url Master SecurityCheck",
@@ -653,7 +651,13 @@
             "name": "WebKnight",
             "regex": "WebKnight Application Firewall Alert|AQTRONIX WebKnight",
             "signatures": [
-                "80f9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "80f9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "73e5:RVZXum60OEhCWKpAYKYPk4JyWOtohM4JiUcMrmRXg1uQJbX3uhZOnthsOj6hX7AA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC",
+                "d0f0:RVdXum60OEhCWKpAYKYPk4JyWOtohM4JiUcMrmRXg1uQJbX3uhdOn9htOj+hX7AA16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
+                "f0c3:RVZXum61OElCWKpAYKYPk4JyWOtohM4JiUcMr2RXg1uQJbX3uhZOnthsOj6hX7AA16BcPhJOdLoXo2tKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "6763:RVZXum61OElCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "7701:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "902b:RVdXum60OEhCWKpAYKYPk4JyWOpohM4IiUYMrmRXg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
             ]
         },
         "wordfence": {
