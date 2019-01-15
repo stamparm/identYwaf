@@ -639,7 +639,7 @@
         "webknight": {
             "company": "AQTRONIX",
             "name": "WebKnight",
-            "regex": "HTTP/1.+\\b999\\b|WebKnight Application Firewall Alert|AQTRONIX WebKnight",
+            "regex": "WebKnight Application Firewall Alert|AQTRONIX WebKnight",
             "signatures": [
                 "80f9:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
