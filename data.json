@@ -742,7 +742,10 @@
             "company": "Zenedge",
             "name": "Zenedge",
             "regex": "Server: ZENEDGE|/__zenedge/assets/",
-            "signatures": []
+            "signatures": [
+                "8e6a:RVdXum60OEhCWKpAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK59nui7c4VmkwI3FZjxtDtAeq+c36A4chW1XaTD",
+                "57ed:RVZXu260OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZjxtDtAeq+c36A4chW1XaTD"
+            ]
         }
     }
 }
