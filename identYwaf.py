@@ -397,10 +397,18 @@ def run():
                 else:
                     matches[SIGNATURES[candidate]] = result
 
-            matches = [(_[1], _[0]) for _ in matches.items()]
-            matches.sort(reverse=True)
+            if len(servers) > 1 or len(codes) > 1:
+                for _ in matches.keys():
+                    if matches[_] < 90:
+                        del matches[_]
 
-            print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(MAX_MATCHES if matches[0][0] != 100 else 1)))
+            if not matches:
+                print colorize("[-] blind match: -")
+            else:
+                matches = [(_[1], _[0]) for _ in matches.items()]
+                matches.sort(reverse=True)
+
+                print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(MAX_MATCHES if matches[0][0] != 100 else 1)))
 
     print
 
