@@ -279,7 +279,7 @@
         "imunify360": {
             "company": "CloudLinux",
             "name": "Imunify360",
-            "regex": "protected by Imunify360|Powered by Imunify360|imunify360 preloader",
+            "regex": "Server: imunify360-webshield|protected by Imunify360|Powered by Imunify360|imunify360 preloader",
             "signatures": []
         },
         "incapsula": {
@@ -350,7 +350,8 @@
                 "d1b6:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "4c95:RVZXum60OEhCWapBYKcPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
                 "8b30:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
-                "8db8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD"
+                "8db8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "8900:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD"
             ]
         },
         "malcare": {
@@ -376,18 +377,19 @@
                 "dd72:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "f53e:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "e15c:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
-                "fc75:RVZXum61OEhCWapBYKcPk4JzWOpohc4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq6c36A4chW1XaTD",
                 "ded8:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhZOnthtOj+hXrAB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "6e99:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "7986:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJOdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
-                "b4e2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4VmkwI3FZjxtDtAeq6c36A4chW1XaTD",
                 "02b2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "4602:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJOdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "b1a2:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "5e9a:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
                 "35c4:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XKTC",
                 "c697:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhZOnthtOj+hX7AB16FcPhJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
-                "85e3:RVZXum60OElCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD"
+                "85e3:RVZXum60OElCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "7d7f:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTD",
+                "064b:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJOdLsXomtKaK99n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "5659:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD"
             ]
         },
         "naxsi": {
@@ -693,7 +695,6 @@
                 "d38c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkwI3FZjxtDtAeq6c3qA4chW1XaTC",
                 "d5bb:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
                 "9da2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJbX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD",
-                "7081:RVZXum60OEhCWapAYKYPkoJyWOpohc4JiUYMr2RXg1uQJbX2uhdOnthtOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTC",
                 "3f1c:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
                 "dbfe:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA5chW1XaTC",
                 "5b85:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTD"

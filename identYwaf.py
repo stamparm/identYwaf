@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.31"
+VERSION = "1.0.32"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -403,12 +403,13 @@ def run():
                         del matches[_]
 
             if not matches:
-                print colorize("[-] blind match: -")
+                print colorize("[-] blind match: - ")
+                print colorize("[!] probably chained web protection systems")
             else:
                 matches = [(_[1], _[0]) for _ in matches.items()]
                 matches.sort(reverse=True)
 
-                print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(MAX_MATCHES if matches[0][0] != 100 else 1)))
+                print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(min(len(matches), MAX_MATCHES) if matches[0][0] != 100 else 1)))
 
     print
 
