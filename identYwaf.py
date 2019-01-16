@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.30"
+VERSION = "1.0.31"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -82,6 +82,7 @@ options = None
 intrusive = None
 seen = set()
 servers = set()
+codes = set()
 
 _exit = exit
 
@@ -143,10 +144,15 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
             print intrusive[HTTPCODE], intrusive[RAW]
             print "---"
 
-    if result and intrusive[SERVER]:
-        servers.add(intrusive[SERVER])
-        if len(servers) > 1:
-            single_print(colorize("[!] multiple (reactive) protection servers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
+    if result:
+        if intrusive[SERVER]:
+            servers.add(intrusive[SERVER])
+            if len(servers) > 1:
+                single_print(colorize("[!] multiple (reactive) rejection HTTP Server headers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
+        if intrusive[HTTPCODE]:
+            codes.add(intrusive[HTTPCODE])
+            if len(codes) > 1:
+                single_print(colorize("[!] multiple (reactive) rejection HTTP codes detected (%s)" % ', '.join("%s" % _ for _ in sorted(codes))))
 
     return result
 
@@ -311,7 +317,9 @@ def run():
             options.url = options.url.replace("https://", "http://")
             check = check_payload(HEURISTIC_PAYLOAD)
         if not check:
-            if challenge is None:
+            if non_blind_check(intrusive[RAW]):
+                exit(colorize("[x] unable to continue due to static responses%s" % (" (captcha)" if re.search(r"(?i)captcha", intrusive[RAW]) is not None else "")))
+            elif challenge is None:
                 exit(colorize("[x] host '%s' does not seem to be protected" % hostname))
             else:
                 exit(colorize("[x] response not changing without JS challenge solved"))
