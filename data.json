@@ -146,7 +146,17 @@
             "company": "Bluedon",
             "name": "Bluedon",
             "regex": "Bluedon Web Application Firewall|Server: BDWAF",
-            "signatures": []
+            "signatures": [
+                "1c53:RVZXu261OElCWapBYKcPk4JzWOtohc4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A4chW1XaTD"
+            ]
+        },
+        "cdnns": {
+            "company": "CdnNs/WdidcNet",
+            "name": "CdnNsWAF",
+            "regex": "by CdnNsWAF Application Gateway",
+            "signatures": [
+                "5c5d:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXo2tLaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC"
+            ]
         },
         "cerber": {
             "company": "Cerber Tech",
@@ -313,7 +323,7 @@
         },
         "kona": {
             "company": "Akamai Technologies",
-            "name": "KONA",
+            "name": "Kona Site Defender",
             "regex": "(?s)Server: AkamaiGHost.+You don't have permission to access",
             "signatures": [
                 "165b:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",

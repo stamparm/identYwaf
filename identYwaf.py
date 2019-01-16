@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.26"
+VERSION = "1.0.27"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
