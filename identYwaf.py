@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.27"
+VERSION = "1.0.28"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -60,6 +60,7 @@ MIN_MATCH_PARTIAL = 5
 DEFAULTS = {"timeout": 10}
 MAX_MATCHES = 5
 QUICK_RATIO_THRESHOLD = 0.2
+MAX_JS_CHALLENGE_SNAPLEN = 120
 
 if COLORIZE:
     for _ in re.findall(r"`.+?`", BANNER):
@@ -81,8 +82,9 @@ intrusive = None
 
 _exit = exit
 
-def exit(message):
-    print "%s%s" % (message, ' ' * 20)  # identYwaf requires usage of Python 2.x
+def exit(message=None):
+    if message:
+        print "%s%s" % (message, ' ' * 20)  # identYwaf requires usage of Python 2.x
     _exit(1)
 
 def retrieve(url, data=None):
@@ -129,8 +131,8 @@ def colorize(message):
     if COLORIZE:
         message = re.sub(r"\[(.)\]", lambda match: "[%s%s\033[00;49m]" % (LEVEL_COLORS[match.group(1)], match.group(1)), message)
 
-        if "rejected summary" in message:
-            for match in re.finditer(r"[^\w]'([^)]+)'", message):
+        if any(_ in message for _ in ("rejected summary", "challenge detected")):
+            for match in re.finditer(r"[^\w]'([^)]+)'" if "rejected summary" in message else r"\('(.+)'\)", message):
                 message = message.replace("'%s'" % match.group(1), "'\033[37m%s\033[00;49m'" % match.group(1), 1)
         else:
             for match in re.finditer(r"[^\w]'([^']+)'", message):
@@ -257,6 +259,13 @@ def run():
 
         exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
 
+    challenge = None
+    if all(_ in original[HTML].lower() for _ in ("eval", "<script")):
+        match = re.search(r"(?is)<body[^>]*>(.*)</body>", re.sub(r"(?is)<script.+?</script>", "", original[HTML]))
+        if re.search(r"(?i)<body", original[HTML]) is None or (match and len(match.group(1)) == 0):
+            challenge = re.search(r"(?is)<script.+</script>", original[HTML]).group(0).replace("\n", "\\n")
+            print colorize("[x] anti-robot JS challenge detected ('%s%s')" % (challenge[:MAX_JS_CHALLENGE_SNAPLEN], "..." if len(challenge) > MAX_JS_CHALLENGE_SNAPLEN else ""))
+
     protection_keywords = GENERIC_PROTECTION_KEYWORDS
     protection_regex = GENERIC_PROTECTION_REGEX % '|'.join(keyword for keyword in protection_keywords if keyword not in original[HTML].lower())
 
@@ -267,7 +276,10 @@ def run():
             options.url = options.url.replace("https://", "http://")
             check = check_payload(HEURISTIC_PAYLOAD)
         if not check:
-            exit(colorize("[x] host '%s' does not seem to be protected" % hostname))
+            if challenge is None:
+                exit(colorize("[x] host '%s' does not seem to be protected" % hostname))
+            else:
+                exit(colorize("[x] response not changing without JS challenge solved"))
 
     if not intrusive[HTTPCODE]:
         print colorize("[i] rejected summary: RST|DROP")
