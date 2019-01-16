@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.28"
+VERSION = "1.0.29"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -39,12 +39,13 @@ l    j|   \    /  _]|    \ |      T`|  |  |`|  T__T  T /    T|   __|
  j  l |     ||   [_ |  |  |  |  |  `|     !` \      / |  |  ||  ] 
 |____jl_____jl_____jl__j__j  l__j  `l____/ `  \_/\_/  l__j__jl__j  (%s)%s""".strip("\n") % (VERSION, "\n")
 
-RAW, TEXT, HTTPCODE, TITLE, HTML, URL = xrange(6)
+RAW, TEXT, HTTPCODE, SERVER, TITLE, HTML, URL = xrange(7)
 COOKIE, UA, REFERER = "Cookie", "User-Agent", "Referer"
 GET, POST = "GET", "POST"
 GENERIC_PROTECTION_KEYWORDS = ("rejected", "forbidden", "suspicious", "malicious", "captcha", "invalid", "your ip", "please contact", "terminated", "protected", "unauthorized", "blocked", "protection", "incident", "denied", "detected", "dangerous", "firewall", "fw_block", "unusual activity", "bad request", "request id", "injection", "permission", "not acceptable", "security policy", "security reasons")
 GENERIC_PROTECTION_REGEX = r"(?i)\b(%s)\b"
 GENERIC_ERROR_MESSAGE_REGEX = r"\b[A-Z][\w, '-]*(protected by|security|unauthorized|detected|attack|error|rejected|allowed|suspicious|automated|blocked|invalid|denied|permission)[\w, '!-]*"
+WAF_RECOGNITION_REGEX = None
 HEURISTIC_PAYLOAD = "1 AND 1=1 UNION ALL SELECT 1,NULL,'<script>alert(\"XSS\")</script>',table_name FROM information_schema.tables WHERE 2>1--/**/; EXEC xp_cmdshell('cat ../../../etc/passwd')#"
 PAYLOADS = []
 SIGNATURES = {}
@@ -79,6 +80,8 @@ HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,
 original = None
 options = None
 intrusive = None
+seen = set()
+servers = set()
 
 _exit = exit
 
@@ -107,6 +110,8 @@ def retrieve(url, data=None):
     match = re.search(r"<title>(?P<result>[^<]+)</title>", retval[HTML], re.I)
     retval[TITLE] = match.group("result") if match and "result" in match.groupdict() else None
     retval[TEXT] = re.sub(r"(?si)<script.+?</script>|<!--.+?-->|<style.+?</style>|<[^>]+>|\s+", " ", retval[HTML])
+    match = re.search(r"(?im)^Server: (.+)", retval[RAW])
+    retval[SERVER] = match.group(1).strip() if match else ""
     return retval
 
 def calc_hash(line, binary=True):
@@ -114,6 +119,11 @@ def calc_hash(line, binary=True):
     if binary:
         result = struct.pack(">H", result)
     return result
+
+def single_print(message):
+    if message not in seen:
+        print message
+        seen.add(message)
 
 def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(GENERIC_PROTECTION_KEYWORDS)):
     global intrusive
@@ -125,6 +135,19 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
         result = options.string in (intrusive[RAW] or "")
     else:
         result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD)
+
+    if options.debug:
+        if result and not payload.isdigit():
+            print "\r---%s" % (40 * ' ')
+            print payload
+            print intrusive[HTTPCODE], intrusive[RAW]
+            print "---"
+
+    if result and intrusive[SERVER]:
+        servers.add(intrusive[SERVER])
+        if len(servers) > 1:
+            single_print(colorize("[!] multiple (reactive) protection servers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
+
     return result
 
 def colorize(message):
@@ -156,6 +179,7 @@ def parse_args():
     parser.add_option("--timeout", dest="timeout", type=int, help="Response timeout (sec) (default: 10)")
     parser.add_option("--proxy", dest="proxy", help="HTTP proxy address (e.g. \"http://127.0.0.1:8080\")")
     parser.add_option("--string", dest="string", help="String to search for in rejected responses")
+    parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
 
     # Dirty hack(s) for help message
     def _(self, *args):
@@ -191,6 +215,8 @@ def parse_args():
             setattr(options, key, DEFAULTS[key])
 
 def init():
+    global WAF_RECOGNITION_REGEX
+
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
     if os.path.isfile(DATA_JSON_FILE):
@@ -199,9 +225,12 @@ def init():
         content = open(DATA_JSON_FILE, "rb").read()
         DATA_JSON.update(json.loads(content))
 
+        WAF_RECOGNITION_REGEX = ""
         for waf in DATA_JSON["wafs"]:
+            WAF_RECOGNITION_REGEX += "%s|" % ("(?P<waf_%s>%s)" % (waf, DATA_JSON["wafs"][waf]["regex"]))
             for signature in DATA_JSON["wafs"][waf]["signatures"]:
                 SIGNATURES[signature] = waf
+        WAF_RECOGNITION_REGEX = WAF_RECOGNITION_REGEX.strip('|')
     else:
         exit(colorize("[x] file '%s' is missing" % DATA_JSON_FILE))
 
@@ -221,6 +250,17 @@ def init():
 
 def format_name(waf):
     return "%s%s" % (DATA_JSON["wafs"][waf]["name"], (" (%s)" % DATA_JSON["wafs"][waf]["company"]) if DATA_JSON["wafs"][waf]["name"] != DATA_JSON["wafs"][waf]["company"] else "")
+
+def non_blind_check(raw):
+    retval = False
+    match = re.search(WAF_RECOGNITION_REGEX, raw or "")
+    if match:
+        retval = True
+        for _ in match.groupdict():
+            if match.group(_):
+                waf = re.sub(r"\Awaf_", "", _)
+                single_print(colorize("[+] non-blind match: '%s'" % format_name(waf)))
+    return retval
 
 def run():
     global original
@@ -251,12 +291,7 @@ def run():
         exit(colorize("[x] missing valid response"))
 
     if original[HTTPCODE] >= 400:
-        for waf in DATA_JSON["wafs"]:
-            if re.search(DATA_JSON["wafs"][waf]["regex"], original[RAW]):
-                found = True
-                print colorize("[+] non-blind match: '%s'" % format_name(waf))
-                break
-
+        non_blind_check(original[RAW])
         exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
 
     challenge = None
@@ -287,12 +322,7 @@ def run():
         _ = "...".join(match.group(0) for match in re.finditer(GENERIC_ERROR_MESSAGE_REGEX, intrusive[HTML])).strip().replace("  ", " ")
         print colorize(("[i] rejected summary: %d ('%s%s')" % (intrusive[HTTPCODE], ("<title>%s</title>" % intrusive[TITLE]) if intrusive[TITLE] else "", "" if not _ or intrusive[HTTPCODE] < 400 else ("...%s" % _))).replace(" ('')", ""))
 
-    found = False
-    for waf in DATA_JSON["wafs"]:
-        if re.search(DATA_JSON["wafs"][waf]["regex"], intrusive[RAW] if intrusive[HTTPCODE] is not None else original[RAW]):
-            found = True
-            print colorize("[+] non-blind match: '%s'" % format_name(waf))
-            break
+    found = non_blind_check(intrusive[RAW] if intrusive[HTTPCODE] is not None else original[RAW])
 
     if not found:
         print colorize("[-] non-blind match: -")
@@ -309,11 +339,12 @@ def run():
                 if not check_payload(str(random.randint(1, 9)), protection_regex):
                     break
                 elif i == VERIFY_RETRY_TIMES - 1:
-                    exit(colorize("[x] host '%s' seems to be (also) rejecting benign requests%s" % (hostname, (" (%d: '<title>%s</title>')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
+                    exit(colorize("[x] host '%s' seems to be (also) rejecting benign requests or misconfigured%s" % (hostname, (" (%d: '<title>%s</title>')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
                 else:
                     time.sleep(5)
 
         last = check_payload(payload, protection_regex)
+        non_blind_check(intrusive[RAW])
         signature += struct.pack(">H", ((calc_hash(payload, binary=False) << 1) | last) & 0xffff)
         results += 'x' if last else '.'
 
