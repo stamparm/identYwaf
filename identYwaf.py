@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.40"
+VERSION = "1.0.41"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -281,7 +281,7 @@ def non_blind_check(raw):
             if match.group(_):
                 waf = re.sub(r"\Awaf_", "", _)
                 non_blind.add(waf)
-                single_print(colorize("[+] non-blind match: '%s'" % format_name(waf)))
+                single_print(colorize("[+] non-blind match: '%s'%s" % (format_name(waf), 20 * ' ')))
     return retval
 
 def run():
@@ -366,7 +366,7 @@ def run():
                 if not check_payload(str(random.randint(1, 9)), protection_regex):
                     break
                 elif i == VERIFY_RETRY_TIMES - 1:
-                    exit(colorize("[x] host '%s' seems to be (also) rejecting benign requests or misconfigured%s" % (hostname, (" (%d: '<title>%s</title>')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
+                    exit(colorize("[x] host '%s' seems to be misconfigured or rejecting benign requests%s" % (hostname, (" (%d: '<title>%s</title>')" % (intrusive[HTTPCODE], intrusive[TITLE].strip())) if intrusive[TITLE] else "")))
                 else:
                     time.sleep(5)
 

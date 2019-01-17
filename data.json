@@ -529,7 +529,7 @@
         "safedog": {
             "company": "Safedog",
             "name": "Safedog",
-            "regex": "Server: Safedog|safedogsite/broswer_logo\\.jpg|404\\.safedog\\.cn/sitedog_stat\\.html",
+            "regex": "Server: Safedog|safedogsite/broswer_logo\\.jpg|404\\.safedog\\.cn/sitedog_stat\\.html|404\\.safedog\\.cn/images/safedogsite/head\\.png",
             "signatures": [
                 "0ee1:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
                 "38e9:RVdXu261OElCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AA16FcPxJOdLsXo2tKaK99n+i7c4VmkgI2FZjxtDtAeq+c36A4chW1XaTD"
