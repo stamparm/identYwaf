@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.39"
+VERSION = "1.0.40"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -79,6 +79,7 @@ original = None
 options = None
 intrusive = None
 chained = False
+non_blind = set()
 seen = set()
 servers = set()
 codes = set()
@@ -193,6 +194,7 @@ def parse_args():
     parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
     parser.add_option("--string", dest="string", help="String to search for in rejected responses")
     parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
+    parser.add_option("--fast", dest="fast", help=optparse.SUPPRESS_HELP)
 
     # Dirty hack(s) for help message
     def _(self, *args):
@@ -278,6 +280,7 @@ def non_blind_check(raw):
         for _ in match.groupdict():
             if match.group(_):
                 waf = re.sub(r"\Awaf_", "", _)
+                non_blind.add(waf)
                 single_print(colorize("[+] non-blind match: '%s'" % format_name(waf)))
     return retval
 
@@ -336,6 +339,9 @@ def run():
                 exit(colorize("[x] host '%s' does not seem to be protected" % hostname))
             else:
                 exit(colorize("[x] response not changing without JS challenge solved"))
+
+    if options.fast and not non_blind:
+        exit(colorize("[x] fast exit because of missing non-blind match"))
 
     if not intrusive[HTTPCODE]:
         print colorize("[i] rejected summary: RST|DROP")
