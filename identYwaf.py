@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.44"
+VERSION = "1.0.45"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -72,8 +72,9 @@ if COLORIZE:
 else:
     BANNER = BANNER.replace('`', "")
 
-USER_AGENT = "%s/%s" % (NAME, VERSION)
-HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "identity", "Cache-Control": "max-age=0"}
+_ = random.randint(20, 64)
+DEFAULT_USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; %s; rv:%d.0) Gecko/20100101 Firefox/%d.0" % (NAME, _, _)
+HEADERS = {"User-Agent": DEFAULT_USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "identity", "Cache-Control": "max-age=0"}
 
 original = None
 options = None
@@ -314,6 +315,10 @@ def run():
 
     if original[HTTPCODE] >= 400:
         non_blind_check(original[RAW])
+        if options.debug:
+            print "\r---%s" % (40 * ' ')
+            print original[HTTPCODE], original[RAW]
+            print "---"
         exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
 
     challenge = None
