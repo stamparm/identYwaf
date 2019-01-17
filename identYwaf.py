@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.37"
+VERSION = "1.0.38"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -80,6 +80,7 @@ HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,
 original = None
 options = None
 intrusive = None
+chained = False
 seen = set()
 servers = set()
 codes = set()
@@ -127,10 +128,12 @@ def single_print(message):
         seen.add(message)
 
 def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(GENERIC_PROTECTION_KEYWORDS)):
+    global chained
     global intrusive
 
     time.sleep(options.delay or 0)
     _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.letters, 3)), urllib.quote(payload))
+    previous = intrusive
     intrusive = retrieve(_)
     if options.string:
         result = options.string in (intrusive[RAW] or "")
@@ -148,11 +151,16 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
         if intrusive[SERVER]:
             servers.add(intrusive[SERVER])
             if len(servers) > 1:
+                chained = True
                 single_print(colorize("[!] multiple (reactive) rejection HTTP Server headers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
         if intrusive[HTTPCODE]:
             codes.add(intrusive[HTTPCODE])
             if len(codes) > 1:
+                chained = True
                 single_print(colorize("[!] multiple (reactive) rejection HTTP codes detected (%s)" % ', '.join("%s" % _ for _ in sorted(codes))))
+        if previous and previous[HTML] and intrusive[HTML] and difflib.SequenceMatcher(a=previous[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD:
+            chained = True
+            single_print(colorize("[!] multiple (reactive) rejection HTML responses detected"))
 
     return result
 
@@ -397,7 +405,7 @@ def run():
                 else:
                     matches[SIGNATURES[candidate]] = result
 
-            if len(servers) > 1 or len(codes) > 1:
+            if chained:
                 for _ in matches.keys():
                     if matches[_] < 90:
                         del matches[_]
