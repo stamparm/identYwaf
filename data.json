@@ -442,7 +442,7 @@
         "ninjafirewall": {
             "company": "NinTechNet",
             "name": "NinjaFirewall",
-            "regex": "<title>NinjaFirewall: 403 Forbidden|For security reasons, it was blocked and logged",
+            "regex": "<title>NinjaFirewall: 403 Forbidden|For security reasons?, it was blocked and logged",
             "signatures": [
                 "2c12:RVZXum60OEhCWapBYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9hsOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtBeq+c3qA4chW1XaTC"
             ]
