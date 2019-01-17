@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.38"
+VERSION = "1.0.39"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -72,9 +72,7 @@ if COLORIZE:
 else:
     BANNER = BANNER.replace('`', "")
 
-REVISION = random.randint(20, 64)
-PLATFORM = random.sample(("X11; %s %s" % (random.sample(("Linux", "Ubuntu; Linux", "U; Linux", "U; OpenBSD", "U; FreeBSD"), 1)[0], random.sample(("amd64", "i586", "i686", "amd64"), 1)[0]), "Windows NT %s%s" % (random.sample(("5.0", "5.1", "5.2", "6.0", "6.1", "6.2", "6.3", "10.0"), 1)[0], random.sample(("", "; Win64", "; WOW64"), 1)[0]), "Macintosh; Intel Mac OS X 10.%s" % random.randint(1, 11)), 1)[0]
-USER_AGENT = "Mozilla/5.0 (%s; rv:%d.0) Gecko/20100101 Firefox/%d.0" % (PLATFORM, REVISION, REVISION)
+USER_AGENT = "%s/%s" % (NAME, VERSION)
 HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.5", "Accept-Encoding": "identity", "Cache-Control": "max-age=0"}
 
 original = None
@@ -192,6 +190,7 @@ def parse_args():
     parser.add_option("--delay", dest="delay", type=int, help="Delay (sec) between tests (default: 0)")
     parser.add_option("--timeout", dest="timeout", type=int, help="Response timeout (sec) (default: 10)")
     parser.add_option("--proxy", dest="proxy", help="HTTP proxy address (e.g. \"http://127.0.0.1:8080\")")
+    parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
     parser.add_option("--string", dest="string", help="String to search for in rejected responses")
     parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
 
@@ -261,6 +260,12 @@ def init():
     if options.proxy:
         opener = urllib2.build_opener(urllib2.ProxyHandler({"http": options.proxy, "https": options.proxy}))
         urllib2.install_opener(opener)
+
+    if options.random_agent:
+        revision = random.randint(20, 64)
+        platform = random.sample(("X11; %s %s" % (random.sample(("Linux", "Ubuntu; Linux", "U; Linux", "U; OpenBSD", "U; FreeBSD"), 1)[0], random.sample(("amd64", "i586", "i686", "amd64"), 1)[0]), "Windows NT %s%s" % (random.sample(("5.0", "5.1", "5.2", "6.0", "6.1", "6.2", "6.3", "10.0"), 1)[0], random.sample(("", "; Win64", "; WOW64"), 1)[0]), "Macintosh; Intel Mac OS X 10.%s" % random.randint(1, 11)), 1)[0]
+        user_agent = "Mozilla/5.0 (%s; rv:%d.0) Gecko/20100101 Firefox/%d.0" % (platform, revision, revision)
+        HEADERS["User-Agent"] = user_agent
 
 def format_name(waf):
     return "%s%s" % (DATA_JSON["wafs"][waf]["name"], (" (%s)" % DATA_JSON["wafs"][waf]["company"]) if DATA_JSON["wafs"][waf]["name"] != DATA_JSON["wafs"][waf]["company"] else "")
