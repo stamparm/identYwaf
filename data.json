@@ -104,7 +104,8 @@
             "signatures": [
                 "03ec:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c36A4chS1XaTC",
                 "1160:RVZXum60OEhCWapBYKYPk4JyWOtohM4IiUcMr2RWg1qQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
-            ]
+            ],
+            "note": "Uses SecureSphere (Imperva) (Reference: https://www.imperva.com/resources/case_studies/CS_Armor.pdf)"
         },
         "asm": {
             "company": "F5 Networks",
