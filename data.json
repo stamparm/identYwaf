@@ -424,12 +424,6 @@
             "regex": "naxsi/waf",
             "signatures": []
         },
-        "netcontinuum": {
-            "company": "NetContinuum/Barracuda Networks",
-            "name": "NetContinuum",
-            "regex": "NCI__SessionId=",
-            "signatures": []
-        },
         "netscaler": {
             "company": "Citrix",
             "name": "NetScaler AppFirewall",
