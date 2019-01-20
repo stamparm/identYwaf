@@ -485,7 +485,7 @@
             ]
         },
         "perimeterx": {
-            "company": "PerimeterX,",
+            "company": "PerimeterX",
             "name": "PerimeterX",
             "regex": "https://www.perimeterx.com/whywasiblocked",
             "signatures": []
