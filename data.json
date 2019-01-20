@@ -189,12 +189,6 @@
                 "5bae:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
             ]
         },
-        "cleantalk": {
-            "company": "CleanTalk",
-            "name": "CleanTalk",
-            "regex": "Blocked by Web Application Firewall|Security by CleanTalk",
-            "signatures": []
-        },
         "cloudbric": {
             "company": "Cloudbric",
             "name": "Cloudbric",
