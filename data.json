@@ -150,12 +150,6 @@
                 "db27:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RWg1qQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
             ]
         },
-        "binarysec": {
-            "company": "BinarySEC",
-            "name": "BinarySEC",
-            "regex": "Server: BinarySec|x-binarysec-",
-            "signatures": []
-        },
         "bitninja": {
             "company": "BitNinja",
             "name": "BitNinja",
@@ -460,12 +454,6 @@
                 "2c12:RVZXum60OEhCWapBYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9hsOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtBeq+c3qA4chW1XaTC"
             ]
         },
-        "nsfocus": {
-            "company": "NSFOCUS",
-            "name": "NSFOCUS",
-            "regex": "Server: NSFocus",
-            "signatures": []
-        },
         "onmessageshield": {
             "company": "Blackbaud",
             "name": "onMessage Shield",
@@ -660,7 +648,9 @@
             "company": "Tencent Cloud Computing",
             "name": "Tencent Cloud",
             "regex": "waf\\.tencent-cloud\\.com",
-            "signatures": []
+            "signatures": [
+                "3f82:RVZXum60OEhCWapBYKcPk4JzWOpohM4IiUYMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
+            ]
         },
         "teros": {
             "company": "Teros/Citrix Systems",
