@@ -592,7 +592,8 @@
             "company": "SiteLock",
             "name": "TrueShield",
             "regex": "SiteLock Incident ID|SiteLock will remember you and will not show this page again|<span class=\\\"value INCIDENT_ID\\\">",
-            "signatures": []
+            "signatures": [],
+            "note": "Uses Incapsula (Reference: https://www.whitefirdesign.com/blog/2016/11/08/more-evidence-that-sitelocks-trueshield-web-application-firewall-is-really-incapsulas-waf/)"
         },
         "sonicwall": {
             "company": "Dell",
