@@ -180,6 +180,18 @@
                 "d8c2:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
+        "checkpoint": {
+            "company": "Check Point",
+            "name": "Next Generation Firewall",
+            "regex": "",
+            "signatures": [
+                "b771:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "3b40:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMrmRWg1qQJLX2uhdOnthsOj+hX7AB16BcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC",
+                "a332:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
+                "495e:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RXg1uQJbX3uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "a89b:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
+            ]
+        },
         "chuangyu": {
             "company": "Yunaq",
             "name": "Chuang Yu Shield",
@@ -642,12 +654,6 @@
             "signatures": [
                 "3f82:RVZXum60OEhCWapBYKcPk4JzWOpohM4IiUYMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
             ]
-        },
-        "teros": {
-            "company": "Teros/Citrix Systems",
-            "name": "Teros/Citrix",
-            "regex": "Set-Cookie:.*st8(id|_wat|_wlf)",
-            "signatures": []
         },
         "urlmaster": {
             "company": "iFinity/DotNetNuke",

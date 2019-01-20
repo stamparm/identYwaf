@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.57"
+VERSION = "1.0.58"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -249,7 +249,8 @@ def init():
 
         WAF_RECOGNITION_REGEX = ""
         for waf in DATA_JSON["wafs"]:
-            WAF_RECOGNITION_REGEX += "%s|" % ("(?P<waf_%s>%s)" % (waf, DATA_JSON["wafs"][waf]["regex"]))
+            if DATA_JSON["wafs"][waf]["regex"]:
+                WAF_RECOGNITION_REGEX += "%s|" % ("(?P<waf_%s>%s)" % (waf, DATA_JSON["wafs"][waf]["regex"]))
             for signature in DATA_JSON["wafs"][waf]["signatures"]:
                 SIGNATURES[signature] = waf
         WAF_RECOGNITION_REGEX = WAF_RECOGNITION_REGEX.strip('|')
