@@ -421,8 +421,10 @@
         "naxsi": {
             "company": "NBS System",
             "name": "NAXSI",
-            "regex": "naxsi/waf",
-            "signatures": []
+            "regex": "(?i)Blocked By NAXSI|Naxsi Blocked Information|naxsi/waf",
+            "signatures": [
+                "19ee:RVdXum61OElCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A4chW1XaTC"
+            ]
         },
         "netscaler": {
             "company": "Citrix",
