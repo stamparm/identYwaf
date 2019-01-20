@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.47"
+VERSION = "1.0.48"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -79,6 +79,7 @@ HEADERS = {"User-Agent": DEFAULT_USER_AGENT, "Accept": "text/html,application/xh
 original = None
 options = None
 intrusive = None
+heuristic = None
 chained = False
 non_blind = set()
 seen = set()
@@ -129,38 +130,43 @@ def single_print(message):
 
 def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(GENERIC_PROTECTION_KEYWORDS)):
     global chained
+    global heuristic
     global intrusive
 
     time.sleep(options.delay or 0)
     _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.letters, 3)), urllib.quote(payload))
-    previous = intrusive
     intrusive = retrieve(_)
     if options.string:
         result = options.string in (intrusive[RAW] or "")
     else:
         result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD)
 
-    if options.debug:
-        if result and not payload.isdigit():
-            print "\r---%s" % (40 * ' ')
-            print payload
-            print intrusive[HTTPCODE], intrusive[RAW]
-            print "---"
+    if not payload.isdigit():
+        if result:
+            if options.debug:
+                print "\r---%s" % (40 * ' ')
+                print payload
+                print intrusive[HTTPCODE], intrusive[RAW]
+                print "---"
 
-    if result:
-        if intrusive[SERVER]:
-            servers.add(intrusive[SERVER])
-            if len(servers) > 1:
+            if intrusive[SERVER]:
+                servers.add(intrusive[SERVER])
+                if len(servers) > 1:
+                    chained = True
+                    single_print(colorize("[!] multiple (reactive) rejection HTTP Server headers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
+
+            if intrusive[HTTPCODE]:
+                codes.add(intrusive[HTTPCODE])
+                if len(codes) > 1:
+                    chained = True
+                    single_print(colorize("[!] multiple (reactive) rejection HTTP codes detected (%s)" % ', '.join("%s" % _ for _ in sorted(codes))))
+
+            if heuristic and heuristic[HTML] and intrusive[HTML] and difflib.SequenceMatcher(a=heuristic[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD:
                 chained = True
-                single_print(colorize("[!] multiple (reactive) rejection HTTP Server headers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
-        if intrusive[HTTPCODE]:
-            codes.add(intrusive[HTTPCODE])
-            if len(codes) > 1:
-                chained = True
-                single_print(colorize("[!] multiple (reactive) rejection HTTP codes detected (%s)" % ', '.join("%s" % _ for _ in sorted(codes))))
-        if previous and previous[HTML] and intrusive[HTML] and difflib.SequenceMatcher(a=previous[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD:
-            chained = True
-            single_print(colorize("[!] multiple (reactive) rejection HTML responses detected"))
+                single_print(colorize("[!] multiple (reactive) rejection HTML responses detected"))
+
+    if payload == HEURISTIC_PAYLOAD:
+        heuristic = intrusive
 
     return result
 
