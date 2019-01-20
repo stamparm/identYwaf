@@ -446,7 +446,9 @@
             "company": "Newdefend",
             "name": "Newdefend",
             "regex": "Server: NewDefend|/nd_block/",
-            "signatures": []
+            "signatures": [
+                "1ba1:RVZXu261OElCWapBYKYPk4JzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthsOj+hX7AB16FcPxJPdLoXo2tKaK99n+i7c4RmkwI3FZjxtDtAeq+c36A4chW1XaTD"
+            ]
         },
         "ninjafirewall": {
             "company": "NinTechNet",
@@ -665,8 +667,10 @@
         "urlmaster": {
             "company": "iFinity/DotNetNuke",
             "name": "Url Master SecurityCheck",
-            "regex": "UrlMaster\\.UrlRewriteModule\\.SecurityCheck",
-            "signatures": []
+            "regex": "UrlMaster\\.UrlRewriteModule\\.SecurityCheck|X-UrlMaster-(Debug|Ex):",
+            "signatures": [
+                "ddd8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
+            ]
         },
         "urlscan": {
             "company": "Microsoft",
