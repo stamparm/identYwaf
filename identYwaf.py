@@ -34,11 +34,11 @@ if sys.version_info.major > 2:
 
     IS_WIN = subprocess._mswindows
 
-    CookieJar = http.cookiejar.CookieJar
-    urlopen = urllib.request.urlopen
     build_opener = urllib.request.build_opener
     install_opener = urllib.request.install_opener
     quote = urllib.parse.quote
+    urlopen = urllib.request.urlopen
+    CookieJar = http.cookiejar.CookieJar
     ProxyHandler = urllib.request.ProxyHandler
     Request = urllib.request.Request
     HTTPCookieProcessor = urllib.request.HTTPCookieProcessor
@@ -51,17 +51,17 @@ else:
 
     IS_WIN = subprocess.mswindows
 
-    CookieJar = cookielib.CookieJar
-    urlopen = urllib2.urlopen
     build_opener = urllib2.build_opener
     install_opener = urllib2.install_opener
     quote = urllib.quote
+    urlopen = urllib2.urlopen
+    CookieJar = cookielib.CookieJar
     ProxyHandler = urllib2.ProxyHandler
     Request = urllib2.Request
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.61"
+VERSION = "1.0.62"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
