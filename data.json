@@ -655,6 +655,14 @@
                 "3f82:RVZXum60OEhCWapBYKcPk4JzWOpohM4IiUYMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
             ]
         },
+        "tmg": {
+            "company": "Microsoft",
+            "name": "Forefront Threat Management Gateway",
+            "regex": "",
+            "signatures": [
+                "4d00:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUYMr2RWg1qQJLX3uhdOnthsOj+hX7AB16BcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XaTC"
+            ]
+        },
         "urlmaster": {
             "company": "iFinity/DotNetNuke",
             "name": "Url Master SecurityCheck",

@@ -29,7 +29,7 @@ import urllib2
 import zlib
 
 NAME = "identYwaf"
-VERSION = "1.0.58"
+VERSION = "1.0.59"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -187,7 +187,7 @@ def colorize(message):
 
         if "hardness" in message:
             for match in re.finditer(r"\(((\d+)%)\)", message):
-                message = message.replace(match.group(1), "\033[%dm%s\033[00;49m" % (91 if " insane " in message else (95 if " hard " in message else (93 if " moderate " in message else 92)), match.group(1)))
+                message = message.replace(match.group(1), "\033[%dm%s\033[00;49m" % (95 if " insane " in message else (91 if " hard " in message else (93 if " moderate " in message else 92)), match.group(1)))
 
     return message
 
