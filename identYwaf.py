@@ -8,10 +8,10 @@ The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 """
 
+from __future__ import print_function
+
 import base64
-import cookielib
 import difflib
-import httplib
 import json
 import optparse
 import os
@@ -25,11 +25,43 @@ import subprocess
 import sys
 import time
 import urllib
-import urllib2
 import zlib
 
+if sys.version_info.major > 2:
+    import http.cookiejar
+    import http.client as httplib
+    import urllib
+
+    IS_WIN = subprocess._mswindows
+
+    CookieJar = http.cookiejar.CookieJar
+    urlopen = urllib.request.urlopen
+    build_opener = urllib.request.build_opener
+    install_opener = urllib.request.install_opener
+    quote = urllib.parse.quote
+    ProxyHandler = urllib.request.ProxyHandler
+    Request = urllib.request.Request
+    HTTPCookieProcessor = urllib.request.HTTPCookieProcessor
+
+    xrange = range
+else:
+    import cookielib
+    import httplib
+    import urllib2
+
+    IS_WIN = subprocess.mswindows
+
+    CookieJar = cookielib.CookieJar
+    urlopen = urllib2.urlopen
+    build_opener = urllib2.build_opener
+    install_opener = urllib2.install_opener
+    quote = urllib.quote
+    ProxyHandler = urllib2.ProxyHandler
+    Request = urllib2.Request
+    HTTPCookieProcessor = urllib2.HTTPCookieProcessor
+
 NAME = "identYwaf"
-VERSION = "1.0.60"
+VERSION = "1.0.61"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -53,7 +85,7 @@ DATA_JSON = {}
 DATA_JSON_FILE = "data.json"
 MAX_HELP_OPTION_LENGTH = 18
 IS_TTY = sys.stdout.isatty()
-COLORIZE = not subprocess.mswindows and IS_TTY
+COLORIZE = not IS_WIN and IS_TTY
 LEVEL_COLORS = {"o": "\033[00;94m", "x": "\033[00;91m", "!": "\033[00;93m", "i": "\033[00;95m", "=": "\033[00;93m", "+": "\033[00;92m", "-": "\033[00;91m"}
 VERIFY_OK_INTERVAL = 5
 VERIFY_RETRY_TIMES = 3
@@ -90,26 +122,26 @@ _exit = exit
 
 def exit(message=None):
     if message:
-        print "%s%s" % (message, ' ' * 20)  # identYwaf requires usage of Python 2.x
+        print("%s%s" % (message, ' ' * 20))
     _exit(1)
 
 def retrieve(url, data=None):
     retval = {}
     try:
-        req = urllib2.Request("".join(url[_].replace(' ', "%20") if _ > url.find('?') else url[_] for _ in xrange(len(url))), data, HEADERS)
-        resp = urllib2.urlopen(req, timeout=options.timeout)
+        req = Request("".join(url[_].replace(' ', "%20") if _ > url.find('?') else url[_] for _ in xrange(len(url))), data, HEADERS)
+        resp = urlopen(req, timeout=options.timeout)
         retval[URL] = resp.url
-        retval[HTML] = resp.read()
+        retval[HTML] = resp.read().decode("utf8")
         retval[HTTPCODE] = resp.code
-        retval[RAW] = "%s %d %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE], resp.msg, "".join(resp.headers.headers), retval[HTML])
-    except Exception, ex:
+        retval[RAW] = "%s %d %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE], resp.msg, str(resp.headers), retval[HTML])
+    except Exception as ex:
         retval[URL] = getattr(ex, "url", url)
         retval[HTTPCODE] = getattr(ex, "code", None)
         try:
-            retval[HTML] = ex.read() if hasattr(ex, "read") else getattr(ex, "msg", "")
+            retval[HTML] = ex.read().decode("utf8") if hasattr(ex, "read") else getattr(ex, "msg", "")
         except:
             retval[HTML] = ""
-        retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), "".join(ex.headers.headers) if hasattr(ex, "headers") else "", retval[HTML])
+        retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), str(ex.headers) if hasattr(ex, "headers") else "", retval[HTML])
     match = re.search(r"<title>(?P<result>[^<]+)</title>", retval[HTML], re.I)
     retval[TITLE] = match.group("result") if match and "result" in match.groupdict() else None
     retval[TEXT] = re.sub(r"(?si)<script.+?</script>|<!--.+?-->|<style.+?</style>|<[^>]+>|\s+", " ", retval[HTML])
@@ -117,15 +149,16 @@ def retrieve(url, data=None):
     retval[SERVER] = match.group(1).strip() if match else ""
     return retval
 
-def calc_hash(line, binary=True):
-    result = zlib.crc32(line) & 0xffffL
+def calc_hash(value, binary=True):
+    value = value.encode("utf8") if not isinstance(value, bytes) else value
+    result = zlib.crc32(value) & 0xffff
     if binary:
         result = struct.pack(">H", result)
     return result
 
 def single_print(message):
     if message not in seen:
-        print message
+        print(message)
         seen.add(message)
 
 def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(GENERIC_PROTECTION_KEYWORDS)):
@@ -134,7 +167,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     global intrusive
 
     time.sleep(options.delay or 0)
-    _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.letters, 3)), urllib.quote(payload))
+    _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.ascii_letters, 3)), quote(payload))
     intrusive = retrieve(_)
     if options.string:
         result = options.string in (intrusive[RAW] or "")
@@ -144,10 +177,10 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     if not payload.isdigit():
         if result:
             if options.debug:
-                print "\r---%s" % (40 * ' ')
-                print payload
-                print intrusive[HTTPCODE], intrusive[RAW]
-                print "---"
+                print("\r---%s" % (40 * ' '))
+                print(payload)
+                print(intrusive[HTTPCODE], intrusive[RAW])
+                print("---")
 
             if intrusive[SERVER]:
                 servers.add(intrusive[SERVER])
@@ -212,7 +245,7 @@ def parse_args():
 
     parser.usage = "python %s <host|url>" % parser.usage
     parser.formatter._format_option_strings = parser.formatter.format_option_strings
-    parser.formatter.format_option_strings = type(parser.formatter.format_option_strings)(_, parser, type(parser))
+    parser.formatter.format_option_strings = type(parser.formatter.format_option_strings)(_, parser)
 
     for _ in ("-h", "--version"):
         option = parser.get_option(_)
@@ -242,7 +275,7 @@ def init():
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
     if os.path.isfile(DATA_JSON_FILE):
-        print colorize("[o] loading data...")
+        print(colorize("[o] loading data..."))
 
         content = open(DATA_JSON_FILE, "rb").read()
         DATA_JSON.update(json.loads(content))
@@ -257,19 +290,19 @@ def init():
     else:
         exit(colorize("[x] file '%s' is missing" % DATA_JSON_FILE))
 
-    print colorize("[o] initializing handlers...")
+    print(colorize("[o] initializing handlers..."))
 
     # Reference: https://stackoverflow.com/a/28052583
     if hasattr(ssl, "_create_unverified_context"):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-    cookie_jar = cookielib.CookieJar()
-    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie_jar))
-    urllib2.install_opener(opener)
+    cookie_jar = CookieJar()
+    opener = build_opener(HTTPCookieProcessor(cookie_jar))
+    install_opener(opener)
 
     if options.proxy:
-        opener = urllib2.build_opener(urllib2.ProxyHandler({"http": options.proxy, "https": options.proxy}))
-        urllib2.install_opener(opener)
+        opener = build_opener(ProxyHandler({"http": options.proxy, "https": options.proxy}))
+        install_opener(opener)
 
     if options.random_agent:
         revision = random.randint(20, 64)
@@ -298,18 +331,18 @@ def run():
     hostname = options.url.split("//")[-1].split('/')[0].split(':')[0]
 
     if not hostname.replace('.', "").isdigit():
-        print colorize("[i] checking hostname '%s'..." % hostname)
+        print(colorize("[i] checking hostname '%s'..." % hostname))
         try:
             socket.getaddrinfo(hostname, None)
         except socket.gaierror:
             exit(colorize("[x] host '%s' does not exist" % hostname))
 
     results = ""
-    signature = ""
+    signature = b""
     counter = 0
     original = retrieve(options.url)
 
-    if 300 <= original[HTTPCODE] < 400 and original[URL]:
+    if 300 <= (original[HTTPCODE] or 0) < 400 and original[URL]:
         original = retrieve(original[URL])
 
     options.url = original[URL]
@@ -323,9 +356,9 @@ def run():
     if original[HTTPCODE] >= 400:
         non_blind_check(original[RAW])
         if options.debug:
-            print "\r---%s" % (40 * ' ')
-            print original[HTTPCODE], original[RAW]
-            print "---"
+            print("\r---%s" % (40 * ' '))
+            print(original[HTTPCODE], original[RAW])
+            print("---")
         exit(colorize("[x] access to host '%s' seems to be restricted%s" % (hostname, (" (%d: '<title>%s</title>')" % (original[HTTPCODE], original[TITLE].strip())) if original[TITLE] else "")))
 
     challenge = None
@@ -333,12 +366,12 @@ def run():
         match = re.search(r"(?is)<body[^>]*>(.*)</body>", re.sub(r"(?is)<script.+?</script>", "", original[HTML]))
         if re.search(r"(?i)<body", original[HTML]) is None or (match and len(match.group(1)) == 0):
             challenge = re.search(r"(?is)<script.+</script>", original[HTML]).group(0).replace("\n", "\\n")
-            print colorize("[x] anti-robot JS challenge detected ('%s%s')" % (challenge[:MAX_JS_CHALLENGE_SNAPLEN], "..." if len(challenge) > MAX_JS_CHALLENGE_SNAPLEN else ""))
+            print(colorize("[x] anti-robot JS challenge detected ('%s%s')" % (challenge[:MAX_JS_CHALLENGE_SNAPLEN], "..." if len(challenge) > MAX_JS_CHALLENGE_SNAPLEN else "")))
 
     protection_keywords = GENERIC_PROTECTION_KEYWORDS
     protection_regex = GENERIC_PROTECTION_REGEX % '|'.join(keyword for keyword in protection_keywords if keyword not in original[HTML].lower())
 
-    print colorize("[i] running basic heuristic test...")
+    print(colorize("[i] running basic heuristic test..."))
     if not check_payload(HEURISTIC_PAYLOAD):
         check = False
         if options.url.startswith("https://"):
@@ -356,15 +389,15 @@ def run():
         exit(colorize("[x] fast exit because of missing non-blind match"))
 
     if not intrusive[HTTPCODE]:
-        print colorize("[i] rejected summary: RST|DROP")
+        print(colorize("[i] rejected summary: RST|DROP"))
     else:
         _ = "...".join(match.group(0) for match in re.finditer(GENERIC_ERROR_MESSAGE_REGEX, intrusive[HTML])).strip().replace("  ", " ")
-        print colorize(("[i] rejected summary: %d ('%s%s')" % (intrusive[HTTPCODE], ("<title>%s</title>" % intrusive[TITLE]) if intrusive[TITLE] else "", "" if not _ or intrusive[HTTPCODE] < 400 else ("...%s" % _))).replace(" ('')", ""))
+        print(colorize(("[i] rejected summary: %d ('%s%s')" % (intrusive[HTTPCODE], ("<title>%s</title>" % intrusive[TITLE]) if intrusive[TITLE] else "", "" if not _ or intrusive[HTTPCODE] < 400 else ("...%s" % _))).replace(" ('')", "")))
 
     found = non_blind_check(intrusive[RAW] if intrusive[HTTPCODE] is not None else original[RAW])
 
     if not found:
-        print colorize("[-] non-blind match: -")
+        print(colorize("[-] non-blind match: -"))
 
     for payload in DATA_JSON["payloads"]:
         counter += 1
@@ -387,34 +420,35 @@ def run():
         signature += struct.pack(">H", ((calc_hash(payload, binary=False) << 1) | last) & 0xffff)
         results += 'x' if last else '.'
 
-    signature = "%s:%s" % (calc_hash(signature).encode("hex"), base64.b64encode(signature))
+    _ = calc_hash(signature)
+    signature = "%s:%s" % (_.encode("hex") if not hasattr(_, "hex") else _.hex(), base64.b64encode(signature).decode("ascii"))
 
-    print colorize("%s[=] results: '%s'" % ("\n" if IS_TTY else "", results))
+    print(colorize("%s[=] results: '%s'" % ("\n" if IS_TTY else "", results)))
 
     hardness = 100 * results.count('x') / len(results)
-    print colorize("[=] hardness: %s (%d%%)" % ("insane" if hardness >= 80 else ("hard" if hardness >= 50 else ("moderate" if hardness >= 30 else "easy")), hardness))
+    print(colorize("[=] hardness: %s (%d%%)" % ("insane" if hardness >= 80 else ("hard" if hardness >= 50 else ("moderate" if hardness >= 30 else "easy")), hardness)))
 
     if not results.strip('.'):
-        print colorize("[-] blind match: -")
+        print(colorize("[-] blind match: -"))
     else:
-        print colorize("[=] signature: '%s'" % signature)
+        print(colorize("[=] signature: '%s'" % signature))
 
         if signature in SIGNATURES:
             waf = SIGNATURES[signature]
-            print colorize("[+] blind match: '%s' (100%%)" % format_name(waf))
+            print(colorize("[+] blind match: '%s' (100%%)" % format_name(waf)))
         elif results.count('x') < MIN_MATCH_PARTIAL:
-            print colorize("[-] blind match: -")
+            print(colorize("[-] blind match: -"))
         else:
             matches = {}
             markers = set()
-            decoded = signature.split(':')[-1].decode("base64")
+            decoded = base64.b64decode(signature.split(':')[-1])
             for i in xrange(0, len(decoded), 2):
                 part = struct.unpack(">H", decoded[i: i + 2])[0]
                 markers.add(part)
 
             for candidate in SIGNATURES:
                 counter_y, counter_n = 0, 0
-                decoded = candidate.split(':')[-1].decode("base64")
+                decoded = base64.b64decode(candidate.split(':')[-1])
                 for i in xrange(0, len(decoded), 2):
                     part = struct.unpack(">H", decoded[i: i + 2])[0]
                     if part in markers:
@@ -429,24 +463,24 @@ def run():
                     matches[SIGNATURES[candidate]] = result
 
             if chained:
-                for _ in matches.keys():
+                for _ in list(matches.keys()):
                     if matches[_] < 90:
                         del matches[_]
 
             if not matches:
-                print colorize("[-] blind match: - ")
-                print colorize("[!] probably chained web protection systems")
+                print(colorize("[-] blind match: - "))
+                print(colorize("[!] probably chained web protection systems"))
             else:
                 matches = [(_[1], _[0]) for _ in matches.items()]
                 matches.sort(reverse=True)
 
-                print colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(min(len(matches), MAX_MATCHES) if matches[0][0] != 100 else 1)))
+                print(colorize("[+] blind match: %s" % ", ".join("'%s' (%d%%)" % (format_name(matches[i][1]), matches[i][0]) for i in xrange(min(len(matches), MAX_MATCHES) if matches[0][0] != 100 else 1))))
 
-    print
+    print()
 
 def main():
     if "--version" not in sys.argv:
-        print BANNER
+        print(BANNER)
 
     parse_args()
     init()
