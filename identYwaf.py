@@ -27,7 +27,7 @@ import time
 import urllib
 import zlib
 
-if sys.version_info.major > 2:
+if sys.version_info >= (3, 0):
     import http.cookiejar
     import http.client as httplib
     import urllib
@@ -61,7 +61,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.63"
+VERSION = "1.0.64"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
