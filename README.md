@@ -4,7 +4,7 @@
 
 **identYwaf** is an identification tool that can recognize web protection type (i.e. WAF) based on blind inference. Blind inference is being done by inspecting responses provoked by a set of predefined offensive (non-destructive) payloads, where those are used only to trigger the web protection system in between (e.g. `http://<host>?aeD0oowi=1 AND 2>1`). Currently it supports more than 70 different protection products (e.g. `aeSecure`, `Airlock`, `CleanTalk`, `CrawlProtect`, `Imunify360`, `MalCare`, `ModSecurity`, `Palo Alto`, `SiteGuard`, `UrlScan`, `Wallarm`, `WatchGuard`, `Wordfence`, etc.), while the knowledge-base is constantly growing.
 
-For more information you can check the [slides](https://www.slideshare.net/stamparm/blind-waf-identification) for a talk "Blind WAF identification" held at Sh3llCON 2019 (Santander / Spain) 
+For more information you can check [slides](https://www.slideshare.net/stamparm/blind-waf-identification) for a talk "Blind WAF identification" held at Sh3llCON 2019 (Santander / Spain).
 
 Note: as part of this project, [screenshots](https://github.com/stamparm/identYwaf/tree/master/screenshots) of characteristic responses for different web protection systems are being gathered (manually) for the future reference.
 
