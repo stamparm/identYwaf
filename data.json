@@ -150,6 +150,14 @@
                 "db27:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RWg1qQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
             ]
         },
+        "bekchy": {
+            "company": "Faydata Information Technologies Inc.",
+            "name": "Bekchy",
+            "regex": "<title>Bekchy - Access Denided</title>|<a class=\"btn\" href=\"https://bekchy.com/report\">",
+            "signatures": [
+                "e1c5:RVZXum60OEhCWKpAYKYPk4JzWOtohc4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
         "bitninja": {
             "company": "BitNinja",
             "name": "BitNinja",
