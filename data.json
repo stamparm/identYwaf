@@ -725,6 +725,12 @@
                 "aa64:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhZOnthsOj+hX7AA16FcPhJOdLoXomtKaK59nui7c4RmkgI3FZjxtDtAeq+c3qA4chW1XaTC"
             ]
         },
+        "webarx": {
+            "company": "WebARX",
+            "name": "WebARX",
+            "regex": "/wp-content/plugins/webarx/includes/|This request has been blocked by.+?>WebARX<",
+            "signatures": []
+        },
         "webknight": {
             "company": "AQTRONIX",
             "name": "WebKnight",
