@@ -61,7 +61,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.67"
+VERSION = "1.0.68"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -142,7 +142,7 @@ def retrieve(url, data=None):
         except:
             retval[HTML] = ""
         retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), str(ex.headers) if hasattr(ex, "headers") else "", retval[HTML])
-    match = re.search(r"<title>(?P<result>[^<]+)</title>", retval[HTML], re.I)
+    match = re.search(r"<title>\s*(?P<result>[^<]+?)\s*</title>", retval[HTML], re.I)
     retval[TITLE] = match.group("result") if match and "result" in match.groupdict() else None
     retval[TEXT] = re.sub(r"(?si)<script.+?</script>|<!--.+?-->|<style.+?</style>|<[^>]+>|\s+", " ", retval[HTML])
     match = re.search(r"(?im)^Server: (.+)", retval[RAW])
