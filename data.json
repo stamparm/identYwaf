@@ -74,6 +74,12 @@
                 "3e2c:RVZXu261OEhCWapBYKcPk4JzWOtohM4IiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXomtKaK59n+i6c4RmkwI2FZjxtDtAeq6c36A5chW1XaTD"
             ]
         },
+        "alertlogic": {
+            "company": "Alert Logic",
+            "name": "Alert Logic",
+            "regex": "(?s)timed_redirect\\(seconds, url\\).+<p class=\"lid\">Reference ID:",
+            "signatures": []
+        },
         "aliyundun": {
             "company": "Alibaba Cloud Computing",
             "name": "AliYunDun",
@@ -492,6 +498,14 @@
             "name": "PerimeterX",
             "regex": "https://www.perimeterx.com/whywasiblocked",
             "signatures": []
+        },
+        "profense": {
+            "company": "ArmorLogic",
+            "name": "Profense",
+            "regex": "Server: Profense",
+            "signatures": [
+                "eaee:RVZXum60OEhCWapAYKYPkoJyWOtohM4JiUcMr2RWg1uQJbX3uhdOnthsOj+hXrAB16FcPxJOdLsXo2tLaK99n+i6c4VmkwI3FZjxtDtAeq6c3qA4chS1XaTC"
+            ]
         },
         "radware": {
             "company": "Radware",
