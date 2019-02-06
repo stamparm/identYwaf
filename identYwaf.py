@@ -11,6 +11,7 @@ all copies or substantial portions of the Software.
 from __future__ import print_function
 
 import base64
+import codecs
 import difflib
 import json
 import optparse
@@ -284,8 +285,8 @@ def init():
     if os.path.isfile(DATA_JSON_FILE):
         print(colorize("[o] loading data..."))
 
-        content = open(DATA_JSON_FILE, "rb").read()
-        DATA_JSON.update(json.loads(content))
+        with codecs.open(DATA_JSON_FILE, "rb", encoding="utf8") as f:
+            DATA_JSON.update(json.load(f))
 
         WAF_RECOGNITION_REGEX = ""
         for waf in DATA_JSON["wafs"]:
