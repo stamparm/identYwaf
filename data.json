@@ -94,7 +94,7 @@
         "approach": {
             "company": "Approach",
             "name": "Approach",
-            "regex": "If this was an legitimate request please contact us with details!|Approach.+?Web Application Firewall",
+            "regex": "Approach.+?Web Application (Firewall|Filtering)",
             "signatures": [
                 "fef0:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XKTD"
             ]
