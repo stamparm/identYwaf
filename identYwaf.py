@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.69"
+VERSION = "1.0.70"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -144,8 +144,7 @@ def retrieve(url, data=None):
             retval[HTML] = ""
         retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), str(ex.headers) if hasattr(ex, "headers") else "", retval[HTML])
 
-    match = re.search(r"charset=[\s\"']?([\w-]+)", retval[RAW])
-    for encoding in (match.group(1) if match else "", "utf8"):
+    for encoding in re.findall(r"charset=[\s\"']?([\w-]+)", retval[RAW])[::-1] + ["utf8"]:
         try:
             retval[HTML] = retval[HTML].decode(encoding)
             break
