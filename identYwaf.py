@@ -61,7 +61,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.69"
+VERSION = "1.0.68"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -131,17 +131,24 @@ def retrieve(url, data=None):
         req = Request("".join(url[_].replace(' ', "%20") if _ > url.find('?') else url[_] for _ in xrange(len(url))), data, HEADERS)
         resp = urlopen(req, timeout=options.timeout)
         retval[URL] = resp.url
-        retval[HTML] = resp.read().decode("utf8")
+        retval[HTML] = resp.read()
         retval[HTTPCODE] = resp.code
         retval[RAW] = "%s %d %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE], resp.msg, str(resp.headers), retval[HTML])
     except Exception as ex:
         retval[URL] = getattr(ex, "url", url)
         retval[HTTPCODE] = getattr(ex, "code", None)
         try:
-            retval[HTML] = ex.read().decode("utf8") if hasattr(ex, "read") else getattr(ex, "msg", "")
+            retval[HTML] = ex.read() if hasattr(ex, "read") else getattr(ex, "msg", "")
         except:
             retval[HTML] = ""
         retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), str(ex.headers) if hasattr(ex, "headers") else "", retval[HTML])
+
+    match = re.search(r"charset=[\s\"']?([\w-]+)", retval[RAW])
+    try:
+        retval[HTML] = retval[HTML].decode(match.group(1))  # raise even if no match
+    except:
+        retval[HTML] = retval[HTML].decode("utf8")
+
     match = re.search(r"<title>\s*(?P<result>[^<]+?)\s*</title>", retval[HTML], re.I)
     retval[TITLE] = match.group("result") if match and "result" in match.groupdict() else None
     retval[TEXT] = re.sub(r"(?si)<script.+?</script>|<!--.+?-->|<style.+?</style>|<[^>]+>|\s+", " ", retval[HTML])
