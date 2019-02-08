@@ -577,7 +577,8 @@
             "regex": "//www\\.eeye\\.com/SecureIIS/|\\?subject=[^>]*SecureIIS Error|SecureIIS[^<]+Web Server Protection",
             "signatures": [
                 "73a3:RVZXum60OEhCWKpAYKYPk4JzWOtohM4IiUcMrmRWg1qQJbX3uhdOnthsOj+hX7AB16BcPhJOdLoXo2tKaK99n+i6c4VmkwI3FZnxtDtBeq6c36A4chS1XaTC",
-                "71c7:RVZXum61OElCWKpAYKYPk4JyWOpohc4IiUYMr2RWg1uQJbX2uhdOnthtOj+hXrAB16FcPhJOdLoXo2tLaK99nui7c4RmkwI2FZjxtDtAeq+c36A4chW1XaTC"
+                "71c7:RVZXum61OElCWKpAYKYPk4JyWOpohc4IiUYMr2RWg1uQJbX2uhdOnthtOj+hXrAB16FcPhJOdLoXo2tLaK99nui7c4RmkwI2FZjxtDtAeq+c36A4chW1XaTC",
+                "f2ed:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC"
             ]
         },
         "shieldsecurity": {

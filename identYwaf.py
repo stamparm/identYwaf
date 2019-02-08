@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.74"
+VERSION = "1.0.75"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -362,7 +362,7 @@ def run():
     if original[HTTPCODE] is None:
         exit(colorize("[x] missing valid response"))
 
-    if original[HTTPCODE] >= 400:
+    if not any((options.string,)) and original[HTTPCODE] >= 400:
         non_blind_check(original[RAW])
         if options.debug:
             print("\r---%s" % (40 * ' '))
