@@ -763,6 +763,14 @@
                 "4d4d:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
             ]
         },
+        "webseal": {
+            "company": "IBM",
+            "name": "WebSEAL",
+            "regex": "(?i)Server: WebSEAL|This is a WebSEAL error message template file|The Access Manager WebSEAL server received an invalid HTTP request",
+            "signatures": [
+                "0338:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
         "wordfence": {
             "company": "Feedjit",
             "name": "Wordfence",
