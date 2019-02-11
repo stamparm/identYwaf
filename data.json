@@ -794,6 +794,14 @@
                 "b13e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC"
             ]
         },
+        "wts": {
+            "company": "WTS",
+            "name": "WTS",
+            "regex": ">WTS\\-WAF",
+            "signatures": [
+                "e94f:RVZXum61OElCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC"
+            ]
+        },
         "yundun": {
             "company": "Yundun",
             "name": "Yundun",

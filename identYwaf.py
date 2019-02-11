@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.76"
+VERSION = "1.0.77"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -181,7 +181,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     if options.string:
         result = options.string in (intrusive[RAW] or "")
     else:
-        result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD)
+        result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").ratio() < QUICK_RATIO_THRESHOLD)
 
     if not payload.isdigit():
         if result:
