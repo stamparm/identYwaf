@@ -797,9 +797,12 @@
         "wts": {
             "company": "WTS",
             "name": "WTS",
-            "regex": ">WTS\\-WAF",
+            "regex": "Server: wts/|>WTS\\-WAF",
             "signatures": [
-                "e94f:RVZXum61OElCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC"
+                "e94f:RVZXum61OElCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC",
+                "12ce:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RWg1uQJLX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC",
+                "3b2b:RVZXum61OElCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC",
+                "7cfd:RVdXum61OElCWapAYKYPkoJzWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC"
             ]
         },
         "yundun": {
