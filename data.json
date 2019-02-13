@@ -253,7 +253,11 @@
             "name": "Comodo",
             "regex": "Server: Protected by COMODO WAF",
             "signatures": [
-                "ade8:RVZXum60OEhCWapAYKYPkoJzWOpohc4IiUYMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD"
+                "ade8:RVZXum60OEhCWapAYKYPkoJzWOpohc4IiUYMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD",
+                "f063:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD",
+                "985c:RVZXum60OEhCWapAYKYPkoJzWOpohc4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c3qA5chW1XaTD",
+                "f063:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTD",
+                "1971:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTD"
             ]
         },
         "crawlprotect": {
@@ -275,7 +279,10 @@
             "name": "dotDefender",
             "regex": "dotDefender Blocked Your Request|Applicure is the leading provider of web application security|Please contact the site administrator, and provide the following Reference ID",
             "signatures": [
-                "7cce:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "7cce:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMrmRWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "dddb:RVdXum61OElCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
+                "0718:RVZXum61OElCWapAYKYPk4JzWOtohM4IiUYMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "9bf2:RVdXum61OElCWapAYKYPk4JzWOtohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
             ]
         },
         "expressionengine": {
