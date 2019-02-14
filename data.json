@@ -815,10 +815,10 @@
         "zenedge": {
             "company": "Zenedge",
             "name": "Zenedge",
-            "regex": "Server: ZENEDGE|/__zenedge/assets/",
+            "regex": "(?s)Server: ZENEDGE.+<div class=\\\"number\\\">403</div>",
             "signatures": [
-                "8e6a:RVdXum60OEhCWKpAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK59nui7c4VmkwI3FZjxtDtAeq+c36A4chW1XaTD",
-                "57ed:RVZXu260OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZjxtDtAeq+c36A4chW1XaTD"
+                "a8fb:RVdXu260OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI2FZnxtDtBeq+c36A4chW1XaTD",
+                "ba3d:RVdXu260OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI2FZjxtDtAeq+c36A4chW1XaTD"
             ]
         }
     }
