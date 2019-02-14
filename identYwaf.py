@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.79"
+VERSION = "1.0.80"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -180,6 +180,8 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     intrusive = retrieve(_)
     if options.string:
         result = options.string in (intrusive[RAW] or "")
+    elif options.code:
+        result = options.code == intrusive[HTTPCODE]
     else:
         result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").ratio() < QUICK_RATIO_THRESHOLD)
 
@@ -241,7 +243,8 @@ def parse_args():
     parser.add_option("--timeout", dest="timeout", type=int, help="Response timeout (sec) (default: 10)")
     parser.add_option("--proxy", dest="proxy", help="HTTP proxy address (e.g. \"http://127.0.0.1:8080\")")
     parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
-    parser.add_option("--string", dest="string", help="String to search for in rejected responses")
+    parser.add_option("--code", dest="code", type=int, help="Expected HTTP code in rejected responses")
+    parser.add_option("--string", dest="string", help="Expected string in rejected responses")
     parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
     parser.add_option("--fast", dest="fast", help=optparse.SUPPRESS_HELP)
 
@@ -362,7 +365,7 @@ def run():
     if original[HTTPCODE] is None:
         exit(colorize("[x] missing valid response"))
 
-    if not any((options.string,)) and original[HTTPCODE] >= 400:
+    if not any((options.string, options.code)) and original[HTTPCODE] >= 400:
         non_blind_check(original[RAW])
         if options.debug:
             print("\r---%s" % (40 * ' '))
