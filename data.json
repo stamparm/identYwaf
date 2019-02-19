@@ -505,10 +505,10 @@
         "radware": {
             "company": "Radware",
             "name": "AppWall",
-            "regex": "Unauthorized Request Blocked|You are seeing this page because we have detected unauthorized activity",
+            "regex": "Unauthorized Request Blocked|You are seeing this page because we have detected unauthorized activity|mailto:CloudWebSec@radware\\.com",
             "signatures": [
                 "e68e:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4VmkwI3FZnxtDtAeq+c36A5chW1XaTD",
-                "2613:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtAeq+c36A5chW1XaTD",
+                "48fa:RVdXu260OEhCWapBYKcPkoJzWOpohM4JiUYMrmRXg1uQJbX3uhdOn9hsOj+hX7AA16BcPxJOdLsXomtKaK59n+i6c4RmkgI2FZnxtDtAeq6c3qA5chW1XaTD",
                 "8fc4:RVdXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI3FZnxtDtAeq+c36A5chW1XaTD"
             ]
         },
@@ -590,7 +590,7 @@
             "regex": "<H2>Error</H2>.+?#FEEE7A.+?<STRONG>Error</STRONG>|Contact support for additional information.<br/>The incident ID is: (\\d{19}|N/A)",
             "signatures": [
                 "f460:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
-                "a470:RVdXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZnxtDtBeq+c36A4chW1XaTC",
+                "9113:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
                 "dc2c:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
                 "599d:RVZXum60OEhCWapBYKYPk4JzWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
                 "a86e:RVZXum60OEhCWapBYKYPk4JyWOtohM4JiUcMr2RWg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC"

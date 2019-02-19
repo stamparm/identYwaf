@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.81"
+VERSION = "1.0.82"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -194,7 +194,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
                 print("---")
 
             if intrusive[SERVER]:
-                servers.add(intrusive[SERVER])
+                servers.add(re.sub(r"\s*\(.+\)\Z", "", intrusive[SERVER]))
                 if len(servers) > 1:
                     chained = True
                     single_print(colorize("[!] multiple (reactive) rejection HTTP Server headers detected (%s)" % ', '.join("'%s'" % _ for _ in sorted(servers))))
