@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.86"
+VERSION = "1.0.87"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -187,7 +187,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
         _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.ascii_letters, 3)), quote(payload))
         intrusive = retrieve(_)
 
-    if options.lock:
+    if options.lock and not payload.isdigit():
         if payload == HEURISTIC_PAYLOAD:
             match = re.search(WAF_RECOGNITION_REGEX, intrusive[RAW] or "")
             if match:

@@ -143,8 +143,8 @@
                 "2998:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
                 "fffa:RVZXum60OEhCWapAYKYPk4JyWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
                 "9de0:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhZOnthtOj+hXrAA16BcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
-                "326d:RVZXum60OElCWapAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hX7AA16FcPhJOdLsXomtLaK59nui7c4RmkgI2FZjxtDtAeq6c3qA5chS1XaTC",
-                "34a8:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhdOn9htOj+hXrAB16BcPxJOdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "34a8:RVZXu261OEhCWapBYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhdOn9htOj+hXrAB16BcPxJOdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "1104:RVZXum61OEhCWapBYKcPk4JzWOpohM4IiUcMr2RXg1uQJbX3uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
         "barracuda": {
@@ -202,7 +202,6 @@
                 "b771:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "3b40:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUYMrmRWg1qQJLX2uhdOnthsOj+hX7AB16BcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XKTC",
                 "a332:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
-                "495e:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RXg1uQJbX3uhdOnthsOj+hX7AB16BcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "a89b:RVZXum61OEhCWapAYKYPkoJzWOpohc4JiUYMr2RWg1uQJbX2uhdOnthsOj+hX7AB16BcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC"
             ]
         },
@@ -365,6 +364,7 @@
             "regex": "(?s)Server: AkamaiGHost.+You don't have permission to access|\\b18\\.[0-9a-f]{8}.1[0-9]{9}\\.[0-9a-f]{7}\\b",
             "signatures": [
                 "b996:RVZXum60OEhCWapAYKYPkoJzWOtohM4JiUcMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
+                "1893:RVZXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXo2tKaK99n+i6c4RmkwI2FZjxtDtAeq+c3qA4chS1XKTC",
                 "165b:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
                 "12b3:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "3426:RVZXum60OEhCWapAYKYPk4JzWOtohM4JiUcMr2RXg1uQJLX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq+c36A4chS1XaTC",
@@ -574,7 +574,7 @@
             "name": "SecureIIS Web Server Security",
             "regex": "//www\\.eeye\\.com/SecureIIS/|\\?subject=[^>]*SecureIIS Error|SecureIIS[^<]+Web Server Protection",
             "signatures": [
-                "73a3:RVZXum60OEhCWKpAYKYPk4JzWOtohM4IiUcMrmRWg1qQJbX3uhdOnthsOj+hX7AB16BcPhJOdLoXo2tKaK99n+i6c4VmkwI3FZnxtDtBeq6c36A4chS1XaTC",
+                "b43e:RVZXum60OEhCWKpAYKYPkoJzWOtohM4IiUcMrmRWg1qQJbX3uhdOnthsOj+hX7AB16BcPhJOdLoXo2tKaK99n+i6c4VmkwI3FZnxtDtBeq6c36A4chS1XaTC",
                 "71c7:RVZXum61OElCWKpAYKYPk4JyWOpohc4IiUYMr2RWg1uQJbX2uhdOnthtOj+hXrAB16FcPhJOdLoXo2tLaK99nui7c4RmkwI2FZjxtDtAeq+c36A4chW1XaTC",
                 "f2ed:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC"
             ]
@@ -585,7 +585,8 @@
             "regex": "Something in the URL, Form or Cookie data wasn't appropriate",
             "signatures": [
                 "e41d:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
-                "389c:RVZXum61OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
+                "389c:RVZXum61OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD",
+                "a79a:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTD"
             ]
         },
         "securesphere": {
