@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.84"
+VERSION = "1.0.85"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -114,6 +114,7 @@ options = None
 intrusive = None
 heuristic = None
 chained = False
+locked_regex = None
 non_blind = set()
 seen = set()
 servers = set()
@@ -174,6 +175,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     global chained
     global heuristic
     global intrusive
+    global locked_regex
 
     time.sleep(options.delay or 0)
     if options.post:
@@ -183,7 +185,24 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
         _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.ascii_letters, 3)), quote(payload))
         intrusive = retrieve(_)
 
-    if options.string:
+    if options.lock:
+        if payload == HEURISTIC_PAYLOAD:
+            match = re.search(WAF_RECOGNITION_REGEX, intrusive[RAW] or "")
+            if match:
+                result = True
+
+                for _ in match.groupdict():
+                    if match.group(_):
+                        waf = re.sub(r"\Awaf_", "", _)
+                        locked_regex = DATA_JSON["wafs"][waf]["regex"]
+            else:
+                result = False
+
+            if not result:
+                exit(colorize("[x] can't lock results to a non-blind match"))
+        else:
+            result = re.search(locked_regex, intrusive[RAW]) is not None
+    elif options.string:
         result = options.string in (intrusive[RAW] or "")
     elif options.code:
         result = options.code == intrusive[HTTPCODE]
@@ -253,6 +272,7 @@ def parse_args():
     parser.add_option("--post", dest="post", help="Use POST body for sending payloads")
     parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
     parser.add_option("--fast", dest="fast", help=optparse.SUPPRESS_HELP)
+    parser.add_option("--lock", dest="lock", help=optparse.SUPPRESS_HELP)
 
     # Dirty hack(s) for help message
     def _(self, *args):
