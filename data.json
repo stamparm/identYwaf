@@ -328,7 +328,8 @@
             "regex": "Incapsula incident ID",
             "signatures": [
                 "2770:RVZXum60OEhCWKpAYKYPkoJzWOpohc4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
-                "3193:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZnxtDtAeq6c3qA4chS1XKTC"
+                "3193:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZnxtDtAeq6c3qA4chS1XKTC",
+                "cdd1:RVZXum60OEhCWapAYKcPk4JzWOpohM4IiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXomtLaK99n+i7c4RmkgI2FZnxtTtBeq+c36A5chW1XaTC"
             ]
         },
         "isaserver": {
@@ -620,7 +621,8 @@
             "regex": "Powered by SiteGuard|The server refuse to browse the page",
             "signatures": [
                 "6e49:RVZXum61OElCWapBYKcPk4JzWOtohM4JiUYMr2RWg1qQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
-                "9839:RVZXum61OElCWapBYKcPk4JzWOtohM4JiUYMr2RWg1qQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c36A4chS1XaTC"
+                "9839:RVZXum61OElCWapBYKcPk4JzWOtohM4JiUYMr2RWg1qQJbX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c36A4chS1XaTC",
+                "bc2d:RVZXum61OElCWapBYKcPk4JzWOtohM4JiUYMr2RWg1qQJLX3uhdOnthtOj+hX7AB16FcPhJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
             ]
         },
         "sitelock": {
@@ -785,7 +787,9 @@
                 "5b85:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTD",
                 "f806:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
                 "0f0d:RVZXum61OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkwI3FZjxtDtAeq6c3qA4chW1XaTC",
-                "b13e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC"
+                "b13e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "40eb:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16BcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
+                "93cd:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
         "wts": {

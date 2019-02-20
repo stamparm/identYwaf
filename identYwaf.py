@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.88"
+VERSION = "1.0.89"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -115,6 +115,7 @@ options = None
 intrusive = None
 heuristic = None
 chained = False
+locked_code = None
 locked_regex = None
 non_blind = set()
 seen = set()
@@ -177,6 +178,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     global chained
     global heuristic
     global intrusive
+    global locked_code
     global locked_regex
 
     time.sleep(options.delay or 0)
@@ -197,13 +199,15 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
                     if match.group(_):
                         waf = re.sub(r"\Awaf_", "", _)
                         locked_regex = DATA_JSON["wafs"][waf]["regex"]
+                        locked_code = intrusive[HTTPCODE]
+                        break
             else:
                 result = False
 
             if not result:
                 exit(colorize("[x] can't lock results to a non-blind match"))
         else:
-            result = re.search(locked_regex, intrusive[RAW]) is not None
+            result = re.search(locked_regex, intrusive[RAW]) is not None and locked_code == intrusive[HTTPCODE]
     elif options.string:
         result = options.string in (intrusive[RAW] or "")
     elif options.code:
