@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.85"
+VERSION = "1.0.86"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -79,7 +79,7 @@ GENERIC_PROTECTION_KEYWORDS = ("rejected", "forbidden", "suspicious", "malicious
 GENERIC_PROTECTION_REGEX = r"(?i)\b(%s)\b"
 GENERIC_ERROR_MESSAGE_REGEX = r"\b[A-Z][\w, '-]*(protected by|security|unauthorized|detected|attack|error|rejected|allowed|suspicious|automated|blocked|invalid|denied|permission)[\w, '!-]*"
 WAF_RECOGNITION_REGEX = None
-HEURISTIC_PAYLOAD = "1 AND 1=1 UNION ALL SELECT 1,NULL,'<script>alert(\"XSS\")</script>',table_name FROM information_schema.tables WHERE 2>1--/**/; EXEC xp_cmdshell('cat ../../../etc/passwd')#"
+HEURISTIC_PAYLOAD = "1 AND 1=1 UNION ALL SELECT 1,NULL,'<script>alert(\"XSS\")</script>',table_name FROM information_schema.tables WHERE 2>1--/**/; EXEC xp_cmdshell('cat ../../../etc/passwd')#"  # Reference: https://github.com/sqlmapproject/sqlmap/blob/master/lib/core/settings.py
 PAYLOADS = []
 SIGNATURES = {}
 DATA_JSON = {}
@@ -95,6 +95,7 @@ DEFAULTS = {"timeout": 10}
 MAX_MATCHES = 5
 QUICK_RATIO_THRESHOLD = 0.2
 MAX_JS_CHALLENGE_SNAPLEN = 120
+ENCODING_TRANSLATIONS = {"windows-874": "iso-8859-11", "utf-8859-1": "utf8", "en_us": "utf8", "macintosh": "iso-8859-1", "euc_tw": "big5_tw", "th": "tis-620", "unicode": "utf8", "utc8": "utf8", "ebcdic": "ebcdic-cp-be", "iso-8859": "iso8859-1", "iso-8859-0": "iso8859-1", "ansi": "ascii", "gbk2312": "gbk", "windows-31j": "cp932", "en": "us"}  # Reference: https://github.com/sqlmapproject/sqlmap/blob/master/lib/request/basic.py
 
 if COLORIZE:
     for _ in re.findall(r"`.+?`", BANNER):
@@ -146,8 +147,9 @@ def retrieve(url, data=None):
         retval[RAW] = "%s %s %s\n%s\n%s" % (httplib.HTTPConnection._http_vsn_str, retval[HTTPCODE] or "", getattr(ex, "msg", ""), str(ex.headers) if hasattr(ex, "headers") else "", retval[HTML])
 
     for encoding in re.findall(r"charset=[\s\"']?([\w-]+)", retval[RAW])[::-1] + ["utf8"]:
+        encoding = ENCODING_TRANSLATIONS.get(encoding, encoding)
         try:
-            retval[HTML] = retval[HTML].decode(encoding)
+            retval[HTML] = retval[HTML].decode(encoding, errors="replace")
             break
         except:
             pass
