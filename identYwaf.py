@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.82"
+VERSION = "1.0.83"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -176,8 +176,13 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     global intrusive
 
     time.sleep(options.delay or 0)
-    _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.ascii_letters, 3)), quote(payload))
-    intrusive = retrieve(_)
+    if options.post:
+        _ = "%s=%s" % ("".join(random.sample(string.ascii_letters, 3)), quote(payload))
+        intrusive = retrieve(options.url, _)
+    else:
+        _ = "%s%s%s=%s" % (options.url, '?' if '?' not in options.url else '&', "".join(random.sample(string.ascii_letters, 3)), quote(payload))
+        intrusive = retrieve(_)
+
     if options.string:
         result = options.string in (intrusive[RAW] or "")
     elif options.code:
@@ -245,6 +250,7 @@ def parse_args():
     parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
     parser.add_option("--code", dest="code", type=int, help="Expected HTTP code in rejected responses")
     parser.add_option("--string", dest="string", help="Expected string in rejected responses")
+    parser.add_option("--post", dest="post", help="Use POST body for sending payloads")
     parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
     parser.add_option("--fast", dest="fast", help=optparse.SUPPRESS_HELP)
 
