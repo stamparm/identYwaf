@@ -62,7 +62,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.90"
+VERSION = "1.0.91"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -391,9 +391,6 @@ def run():
 
     options.url = original[URL]
 
-    #if re.search(r"(?i)captcha", original[HTML]) is not None:
-        #exit(colorize("[x] there seems to be an activated captcha"))
-
     if original[HTTPCODE] is None:
         exit(colorize("[x] missing valid response"))
 
@@ -472,8 +469,11 @@ def run():
     hardness = 100 * results.count('x') / len(results)
     print(colorize("[=] hardness: %s (%d%%)" % ("insane" if hardness >= 80 else ("hard" if hardness >= 50 else ("moderate" if hardness >= 30 else "easy")), hardness)))
 
-    if not results.strip('.'):
+    if not results.strip('.') or not results.strip('x'):
         print(colorize("[-] blind match: -"))
+
+        if re.search(r"(?i)captcha", original[HTML]) is not None:
+            exit(colorize("[x] there seems to be an activated captcha"))
     else:
         print(colorize("[=] signature: '%s'" % signature))
 

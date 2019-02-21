@@ -175,9 +175,7 @@
             "company": "Bluedon",
             "name": "Bluedon",
             "regex": "Bluedon Web Application Firewall|Server: BDWAF",
-            "signatures": [
-                "1c53:RVZXu261OElCWapBYKcPk4JzWOtohc4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A4chW1XaTD"
-            ]
+            "signatures": []
         },
         "cdnns": {
             "company": "CdnNs/WdidcNet",
