@@ -244,7 +244,8 @@
                 "f3bb:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUYMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPxJPdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTC",
                 "471d:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
                 "8936:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
-                "0ade:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
+                "0ade:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
+                "22d1:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hXrAA16FcPxJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
         "comodo": {
@@ -352,7 +353,9 @@
             "regex": "Server: jiasule-WAF|notice-jiasule|static\\.jiasule\\.com/static/js/http_error\\.js",
             "signatures": [
                 "7520:RVZXum61OElCWapAYKYPk4JzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtBeq+c36A5chW1XaTD",
-                "001e:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtTtAeq+c36A5chW1XaTC"
+                "001e:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI3FZjxtTtAeq+c36A5chW1XaTC",
+                "665d:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chS1XaTC",
+                "4fed:RVZXum61OElCWapAYKYPkoJzWOpohM4IiUYMr2RXg1uQJbX2uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC"
             ]
         },
         "knownsec": {
@@ -440,7 +443,8 @@
                 "064b:RVZXum60OEhCWapAYKYPk4JyWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hXrAB16FcPhJOdLsXomtKaK99n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "5659:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "94b1:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
-                "7951:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD"
+                "7951:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
+                "b83a:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUYMrmRWg1qQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTD"
             ]
         },
         "naxsi": {
@@ -693,7 +697,7 @@
         "urlmaster": {
             "company": "iFinity/DotNetNuke",
             "name": "Url Master SecurityCheck",
-            "regex": "UrlMaster\\.UrlRewriteModule\\.SecurityCheck|X-UrlMaster-(Debug|Ex):",
+            "regex": "UrlRewriteModule\\.SecurityCheck|X-UrlMaster-(Debug|Ex):",
             "signatures": [
                 "ddd8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XaTC"
             ]
@@ -762,7 +766,8 @@
                 "6763:RVZXum61OElCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "7701:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
                 "902b:RVdXum60OEhCWKpAYKYPk4JyWOpohM4IiUYMrmRXg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC",
-                "4d4d:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
+                "4d4d:RVdXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhdOn9htOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC",
+                "17a8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUcMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
             ]
         },
         "webseal": {
@@ -791,7 +796,8 @@
                 "0f0d:RVZXum61OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkwI3FZjxtDtAeq6c3qA4chW1XaTC",
                 "b13e:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
                 "40eb:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16BcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTC",
-                "93cd:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "93cd:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "ba7d:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRXg1qQJLX2uhdOnthtOj+hXrAB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XKTC"
             ]
         },
         "wts": {

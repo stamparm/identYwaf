@@ -14,6 +14,7 @@ import base64
 import codecs
 import difflib
 import json
+import locale
 import optparse
 import os
 import random
@@ -61,8 +62,11 @@ else:
     Request = urllib2.Request
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
+    # Reference: http://blog.mathieu-leplatre.info/python-utf-8-print-fails-when-redirecting-stdout.html
+    sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
+
 NAME = "identYwaf"
-VERSION = "1.0.91"
+VERSION = "1.0.92"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
