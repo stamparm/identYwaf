@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.92"
+VERSION = "1.0.93"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -100,6 +100,7 @@ MAX_MATCHES = 5
 QUICK_RATIO_THRESHOLD = 0.2
 MAX_JS_CHALLENGE_SNAPLEN = 120
 ENCODING_TRANSLATIONS = {"windows-874": "iso-8859-11", "utf-8859-1": "utf8", "en_us": "utf8", "macintosh": "iso-8859-1", "euc_tw": "big5_tw", "th": "tis-620", "unicode": "utf8", "utc8": "utf8", "ebcdic": "ebcdic-cp-be", "iso-8859": "iso8859-1", "iso-8859-0": "iso8859-1", "ansi": "ascii", "gbk2312": "gbk", "windows-31j": "cp932", "en": "us"}  # Reference: https://github.com/sqlmapproject/sqlmap/blob/master/lib/request/basic.py
+PROXY_TESTING_PAGE = "https://myexternalip.com/raw"
 
 if COLORIZE:
     for _ in re.findall(r"`.+?`", BANNER):
@@ -125,6 +126,8 @@ non_blind = set()
 seen = set()
 servers = set()
 codes = set()
+proxies = list()
+proxies_index = 0
 
 _exit = exit
 
@@ -134,7 +137,24 @@ def exit(message=None):
     _exit(1)
 
 def retrieve(url, data=None):
+    global proxies_index
+
     retval = {}
+
+    if proxies:
+        while True:
+            try:
+                opener = build_opener(ProxyHandler({"http": proxies[proxies_index], "https": proxies[proxies_index]}))
+                install_opener(opener)
+                proxies_index = (proxies_index + 1) % len(proxies)
+                urlopen(PROXY_TESTING_PAGE).read()
+            except KeyboardInterrupt:
+                raise
+            except:
+                pass
+            else:
+                break
+
     try:
         req = Request("".join(url[_].replace(' ', "%20") if _ > url.find('?') else url[_] for _ in xrange(len(url))), data, HEADERS)
         resp = urlopen(req, timeout=options.timeout)
@@ -276,6 +296,7 @@ def parse_args():
     parser.add_option("--delay", dest="delay", type=int, help="Delay (sec) between tests (default: 0)")
     parser.add_option("--timeout", dest="timeout", type=int, help="Response timeout (sec) (default: 10)")
     parser.add_option("--proxy", dest="proxy", help="HTTP proxy address (e.g. \"http://127.0.0.1:8080\")")
+    parser.add_option("--proxy-file", dest="proxy_file", help="Load (rotating) HTTP(s) proxy list from a file")
     parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
     parser.add_option("--code", dest="code", type=int, help="Expected HTTP code in rejected responses")
     parser.add_option("--string", dest="string", help="Expected string in rejected responses")
@@ -343,6 +364,17 @@ def init():
     # Reference: https://stackoverflow.com/a/28052583
     if hasattr(ssl, "_create_unverified_context"):
         ssl._create_default_https_context = ssl._create_unverified_context
+
+    if options.proxy_file:
+        if os.path.isfile(options.proxy_file):
+            print(colorize("[o] loading proxy list..."))
+
+            with codecs.open(options.proxy_file, "rb", encoding="utf8") as f:
+                proxies.extend(re.sub(r"\s.*", "", _.strip()) for _ in f.read().strip().split('\n') if _.startswith("http"))
+                random.shuffle(proxies)
+        else:
+            exit(colorize("[x] file '%s' does not exist" % options.proxy_file))
+
 
     cookie_jar = CookieJar()
     opener = build_opener(HTTPCookieProcessor(cookie_jar))
