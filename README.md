@@ -48,8 +48,7 @@ l    j|   \    /  _]|    \ |      T|  |  ||  T__T  T /    T|   __|
  |  T |    \  /  [_ |  _  Yl_j  l_j|  ~  ||  |  |  |Y  o  ||  l_
  |  | |  D  YY    _]|  |  |  |  |  |___  ||  |  |  ||     ||   _|
  j  l |     ||   [_ |  |  |  |  |  |     ! \      / |  |  ||  ] 
-|____jl_____jl_____jl__j__j  l__j  l____/   \_/\_/  l__j__jl__j  (1.0.62)
-
+|____jl_____jl_____jl__j__j  l__j  l____/   \_/\_/  l__j__jl__j  (1.0.XX)
 Usage: python identYwaf.py [options] <host|url>
 
 Options:
@@ -58,6 +57,9 @@ Options:
   --delay=DELAY       Delay (sec) between tests (default: 0)
   --timeout=TIMEOUT   Response timeout (sec) (default: 10)
   --proxy=PROXY       HTTP proxy address (e.g. "http://127.0.0.1:8080")
+  --proxy-file=PRO..  Load (rotating) HTTP(s) proxy list from a file
   --random-agent=R..  Use random HTTP User-Agent header value
-  --string=STRING     String to search for in rejected responses
+  --code=CODE         Expected HTTP code in rejected responses
+  --string=STRING     Expected string in rejected responses
+  --post=POST         Use POST body for sending payloads
 ```
