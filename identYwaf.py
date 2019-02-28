@@ -26,13 +26,12 @@ import struct
 import subprocess
 import sys
 import time
-import urllib
 import zlib
 
 if sys.version_info >= (3, 0):
     import http.cookiejar
     import http.client as httplib
-    import urllib
+    import urllib.request
 
     IS_WIN = subprocess._mswindows
 
@@ -49,6 +48,7 @@ if sys.version_info >= (3, 0):
 else:
     import cookielib
     import httplib
+    import urllib
     import urllib2
 
     IS_WIN = subprocess.mswindows
@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.93"
+VERSION = "1.0.94"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
