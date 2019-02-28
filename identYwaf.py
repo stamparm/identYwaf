@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.94"
+VERSION = "1.0.95"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -297,13 +297,13 @@ def parse_args():
     parser.add_option("--timeout", dest="timeout", type=int, help="Response timeout (sec) (default: 10)")
     parser.add_option("--proxy", dest="proxy", help="HTTP proxy address (e.g. \"http://127.0.0.1:8080\")")
     parser.add_option("--proxy-file", dest="proxy_file", help="Load (rotating) HTTP(s) proxy list from a file")
-    parser.add_option("--random-agent", dest="random_agent", help="Use random HTTP User-Agent header value")
+    parser.add_option("--random-agent", dest="random_agent", action="store_true", help="Use random HTTP User-Agent header value")
     parser.add_option("--code", dest="code", type=int, help="Expected HTTP code in rejected responses")
     parser.add_option("--string", dest="string", help="Expected string in rejected responses")
-    parser.add_option("--post", dest="post", help="Use POST body for sending payloads")
-    parser.add_option("--debug", dest="debug", help=optparse.SUPPRESS_HELP)
-    parser.add_option("--fast", dest="fast", help=optparse.SUPPRESS_HELP)
-    parser.add_option("--lock", dest="lock", help=optparse.SUPPRESS_HELP)
+    parser.add_option("--post", dest="post", action="store_true", help="Use POST body for sending payloads")
+    parser.add_option("--debug", dest="debug", action="store_true", help=optparse.SUPPRESS_HELP)
+    parser.add_option("--fast", dest="fast", action="store_true", help=optparse.SUPPRESS_HELP)
+    parser.add_option("--lock", dest="lock", action="store_true", help=optparse.SUPPRESS_HELP)
 
     # Dirty hack(s) for help message
     def _(self, *args):
