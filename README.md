@@ -24,6 +24,10 @@ Note: as part of this project, [screenshots](https://github.com/stamparm/identYw
 
 ![](https://imgur.com/20cd08y.png)
 
+## Requirements
+
+**identYwaf** works out of the box with any Python version from **2.6.x** to **3.7.x** on any platform.
+
 ## Installation
 
 You can download the latest zipball by clicking [here](https://github.com/stamparm/identYwaf/archive/master.zip).
