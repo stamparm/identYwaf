@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.98"
+VERSION = "1.0.99"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -124,6 +124,7 @@ locked_code = None
 locked_regex = None
 non_blind = set()
 seen = set()
+blocked = []
 servers = set()
 codes = set()
 proxies = list()
@@ -479,7 +480,8 @@ def run():
     if not found:
         print(colorize("[-] non-blind match: -"))
 
-    for payload in DATA_JSON["payloads"]:
+    for item in DATA_JSON["payloads"]:
+        info, payload = item.split("::", 1)
         counter += 1
 
         if IS_TTY:
@@ -500,6 +502,9 @@ def run():
         signature += struct.pack(">H", ((calc_hash(payload, binary=False) << 1) | last) & 0xffff)
         results += 'x' if last else '.'
 
+        if last and info not in blocked:
+            blocked.append(info)
+
     _ = calc_hash(signature)
     signature = "%s:%s" % (_.encode("hex") if not hasattr(_, "hex") else _.hex(), base64.b64encode(signature).decode("ascii"))
 
@@ -507,6 +512,9 @@ def run():
 
     hardness = 100 * results.count('x') / len(results)
     print(colorize("[=] hardness: %s (%d%%)" % ("insane" if hardness >= 80 else ("hard" if hardness >= 50 else ("moderate" if hardness >= 30 else "easy")), hardness)))
+
+    if blocked:
+        print(colorize("[=] blocked categories: %s" % ", ".join(blocked)))
 
     if not results.strip('.') or not results.strip('x'):
         print(colorize("[-] blind match: -"))
