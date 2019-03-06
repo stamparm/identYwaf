@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.97"
+VERSION = "1.0.98"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -356,6 +356,9 @@ def init():
             for signature in DATA_JSON["wafs"][waf]["signatures"]:
                 SIGNATURES[signature] = waf
         WAF_RECOGNITION_REGEX = WAF_RECOGNITION_REGEX.strip('|')
+
+        flags = "".join(set(_ for _ in "".join(re.findall(r"\(\?(\w+)\)", WAF_RECOGNITION_REGEX))))
+        WAF_RECOGNITION_REGEX = "(?%s)%s" % (flags, re.sub(r"\(\?\w+\)", "", WAF_RECOGNITION_REGEX))  # patch for "DeprecationWarning: Flags not at the start of the expression" in Python3.7
     else:
         exit(colorize("[x] file '%s' is missing" % DATA_JSON_FILE))
 
