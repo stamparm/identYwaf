@@ -132,7 +132,10 @@
                 "620c:RVZXum60OEhCWapBYKcPkoJzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
                 "b9a0:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq+c3qA4chW1XaTC",
                 "ccb6:RVdXum61OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtTtAeq+c36A5chW1XaTC",
-                "9138:RVZXum60OEhCWapBYKcPk4JzWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC"
+                "9138:RVZXum60OEhCWapBYKcPk4JzWOpohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC",
+                "54cc:RVZXum61OEhCWapBYKcPkoJzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq6c3qA4chS1XaTC",
+                "4c83:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZjxtDtAeq+c36A5chW1XaTC",
+                "8453:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq+c36A4chS1XaTC"
             ]
         },
         "aws": {
@@ -245,7 +248,8 @@
                 "471d:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
                 "8936:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUcMrmRWg1uQJLX2uhdOnthsOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC",
                 "0ade:RVZXum60OEhCWapAYKYPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hX7AB16FcPxJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq+c3qA5chW1XaTC",
-                "22d1:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hXrAA16FcPxJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+                "22d1:RVZXum60OEhCWapBYKcPkoJzWOpohM4IiUcMr2RWg1uQJbX2uhdOnthtOj+hXrAA16FcPxJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC",
+                "e9bd:RVZXum60OEhCWKpAYKYPkoJzWOpohM4IiUYMr2RXg1uQJLX3uhdOnthsOj+hXrAB16FcPxJPdLoXo2tKaK99n+i6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
         "comodo": {
@@ -336,7 +340,7 @@
         "isaserver": {
             "company": "Microsoft",
             "name": "ISA Server",
-            "regex": "The ISA Server denied the specified Uniform Resource Locator \\(URL\\)|The server denied the specified Uniform Resource Locator \\(URL\\)",
+            "regex": "The (ISA Server|server) denied the specified Uniform Resource Locator \\(URL\\)",
             "signatures": []
         },
         "janusec": {
@@ -444,7 +448,8 @@
                 "5659:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "94b1:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
                 "7951:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUcMr2RXg1uQJLX2uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59n+i6c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD",
-                "b83a:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUYMrmRWg1qQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTD"
+                "b83a:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUYMrmRWg1qQJbX2uhdOnthtOj+hX7AB16FcPhJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq6c3qA4chW1XaTD",
+                "4191:RVZXum60OEhCWapAYKYPkoJyWOpohM4JiUYMr2RXg1uQJbX2uhdOnthtOj+hX7AB16FcPhJPdLoXomtKaK59n+i7c4RmkgI2FZjxtDtAeq6c36A4chW1XaTD"
             ]
         },
         "naxsi": {
