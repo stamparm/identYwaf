@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.100"
+VERSION = "1.0.101"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -238,7 +238,7 @@ def check_payload(payload, protection_regex=GENERIC_PROTECTION_REGEX % '|'.join(
     elif options.code:
         result = options.code == intrusive[HTTPCODE]
     else:
-        result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").ratio() < QUICK_RATIO_THRESHOLD)
+        result = intrusive[HTTPCODE] != original[HTTPCODE] or (intrusive[HTTPCODE] != 200 and intrusive[TITLE] != original[TITLE]) or (re.search(protection_regex, intrusive[HTML]) is not None and re.search(protection_regex, original[HTML]) is None) or (difflib.SequenceMatcher(a=original[HTML] or "", b=intrusive[HTML] or "").quick_ratio() < QUICK_RATIO_THRESHOLD)
 
     if not payload.isdigit():
         if result:
