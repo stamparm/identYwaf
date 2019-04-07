@@ -783,6 +783,12 @@
                 "0338:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhZOnthtOj+hXrAA16FcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
             ]
         },
+        "webtotem": {
+            "company": "WebTotem",
+            "name": "WebTotem",
+            "regex": "The current request was blocked by.+?>WebTotem<",
+            "signatures": []
+        },
         "wordfence": {
             "company": "Feedjit",
             "name": "Wordfence",
