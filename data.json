@@ -576,6 +576,12 @@
                 "90fa:RVZXu261OEhCWapBYKcPk4JzWOpohM4JiUcMr2RXg1uQJbX3uhdOnthtOj+hX7AA16FcPhJOdLoXo2tKaK99n+i7c4RmkgI2FZjxtDtAeq+c3qA4chW1XaTD"
             ]
         },
+        "safeline": {
+            "company": "Chaitin Tech",
+            "name": "SafeLine Next Gen WAF",
+            "regex": "<!\\-\\- event_id: [0-9a-f]{32} \\-\\->",
+            "signatures": []
+        },
         "secureentry": {
             "company": "United Security Providers",
             "name": "Secure Entry Server",
