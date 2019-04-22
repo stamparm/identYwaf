@@ -141,7 +141,7 @@
         "astra": {
             "company": "Czar Securities",
             "name": "Astra",
-            "regex": "website protection system((.|\\n)*)https://www\\.getastra\\.com",
+            "regex": "(?s)website protection system.+https://www\\.getastra\\.com",
             "signatures": []
         },
         "aws": {
