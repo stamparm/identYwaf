@@ -138,6 +138,12 @@
                 "8453:RVZXum60OEhCWapBYKcPk4JzWOtohc4JiUcMr2RWg1uQJbX3uhdOnthtOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4RmkwI3FZjxtDtAeq+c36A4chS1XaTC"
             ]
         },
+        "astra": {
+            "company": "Czar Securities",
+            "name": "Astra",
+            "regex": "website protection system((.|\\n)*)https://www\\.getastra\\.com",
+            "signatures": []
+        },
         "aws": {
             "company": "Amazon",
             "name": "AWS WAF",
