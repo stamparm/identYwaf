@@ -186,6 +186,12 @@
             "regex": "Bluedon Web Application Firewall|Server: BDWAF",
             "signatures": []
         },
+        "bulletproofsecurity": {
+            "company": "AITpro Website Security",
+            "name": "BulletProof Security Pro",
+            "regex": "(?s)bpsMessage.+403 Forbidden Error Page.+If you arrived here due to a search or clicking on a link click your.+IP Address",
+            "signatures": []
+        },
         "cdnns": {
             "company": "CdnNs/WdidcNet",
             "name": "CdnNsWAF",
