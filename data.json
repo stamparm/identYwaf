@@ -609,7 +609,7 @@
 	"secupress": {
             "company": "SecuPress",
             "name": "SecuPress",
-            "regex": "<h1>SecuPress</h1><h2>\d{3}",
+            "regex": "<h1>SecuPress</h1><h2>\\d{3}",
             "signatures": []
         },
         "shieldsecurity": {
