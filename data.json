@@ -606,6 +606,12 @@
                 "f2ed:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC"
             ]
         },
+	"secupress": {
+            "company": "SecuPress",
+            "name": "SecuPress",
+            "regex": "SecuPress.+503 Service Unavailable.+You are not allowed to access the requested page",
+            "signatures": []
+        },
         "shieldsecurity": {
             "company": "One Dollar Plugin",
             "name": "Shield Security",
