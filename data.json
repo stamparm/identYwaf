@@ -612,11 +612,13 @@
                 "f2ed:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJbX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4VmkwI3FZjxtDtAeq6c36A4chS1XaTC"
             ]
         },
-	"secupress": {
+        "secupress": {
             "company": "SecuPress",
             "name": "SecuPress",
             "regex": "<h1>SecuPress</h1><h2>\\d{3}",
-            "signatures": []
+            "signatures": [
+                "bcb4:RVZXum60OEhCWKpAYKYPkoJyWOpohc4IiUYMr2RWg1uQJLX2uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A4chW1XaTC"
+            ]
         },
         "shieldsecurity": {
             "company": "One Dollar Plugin",
