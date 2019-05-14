@@ -609,7 +609,7 @@
 	"secupress": {
             "company": "SecuPress",
             "name": "SecuPress",
-            "regex": "SecuPress.+503 Service Unavailable.+You are not allowed to access the requested page",
+            "regex": "<h1>SecuPress</h1><h2>\d{3}",
             "signatures": []
         },
         "shieldsecurity": {
