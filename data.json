@@ -488,6 +488,14 @@
                 "1ba1:RVZXu261OElCWapBYKYPk4JzWOpohM4JiUcMr2RXg1uQJLX3uhdOnthsOj+hX7AB16FcPxJPdLoXo2tKaK99n+i7c4RmkwI3FZjxtDtAeq+c36A4chW1XaTD"
             ]
         },
+        "nexusguard": {
+            "company": "Nexusguard Limited",
+            "name": "Nexusguard",
+            "regex": "speresources\\.nexusguard\\.com/wafpage/[^>]*#\\d{3};|<p>Powered by Nexusguard</p>",
+            "signatures": [
+                "869d:RVZXum60OEhCWKpAYKYPkoJyWOpohM4IiUYMrmRWg1qQJLX2uhdOn9htOj+hX7AB16FcPxJPdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c36A5chW1XaTC"
+            ]
+        },
         "ninjafirewall": {
             "company": "NinTechNet",
             "name": "NinjaFirewall",
