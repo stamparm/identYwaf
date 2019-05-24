@@ -23,7 +23,6 @@ import ssl
 import socket
 import string
 import struct
-import subprocess
 import sys
 import time
 import zlib
@@ -59,7 +58,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.112"
+VERSION = "1.0.113"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
