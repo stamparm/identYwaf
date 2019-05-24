@@ -66,7 +66,7 @@ else:
     sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 NAME = "identYwaf"
-VERSION = "1.0.108"
+VERSION = "1.0.109"
 BANNER = """
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
@@ -87,7 +87,7 @@ HEURISTIC_PAYLOAD = "1 AND 1=1 UNION ALL SELECT 1,NULL,'<script>alert(\"XSS\")</
 PAYLOADS = []
 SIGNATURES = {}
 DATA_JSON = {}
-DATA_JSON_FILE = "data.json"
+DATA_JSON_FILE = os.path.join(os.path.dirname(__file__), "data.json")
 MAX_HELP_OPTION_LENGTH = 18
 IS_TTY = sys.stdout.isatty()
 COLORIZE = not IS_WIN and IS_TTY
@@ -339,14 +339,10 @@ def parse_args():
         if getattr(options, key, None) is None:
             setattr(options, key, DEFAULTS[key])
 
-def init():
+def load_data():
     global WAF_RECOGNITION_REGEX
 
-    os.chdir(os.path.abspath(os.path.dirname(__file__)))
-
     if os.path.isfile(DATA_JSON_FILE):
-        print(colorize("[o] loading data..."))
-
         with codecs.open(DATA_JSON_FILE, "rb", encoding="utf8") as f:
             DATA_JSON.update(json.load(f))
 
@@ -362,6 +358,9 @@ def init():
         WAF_RECOGNITION_REGEX = "(?%s)%s" % (flags, re.sub(r"\(\?\w+\)", "", WAF_RECOGNITION_REGEX))  # patch for "DeprecationWarning: Flags not at the start of the expression" in Python3.7
     else:
         exit(colorize("[x] file '%s' is missing" % DATA_JSON_FILE))
+
+def init():
+    os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
     print(colorize("[o] initializing handlers..."))
 
@@ -576,6 +575,8 @@ def main():
     parse_args()
     init()
     run()
+
+load_data()
 
 if __name__ == "__main__":
     try:
