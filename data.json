@@ -677,6 +677,12 @@
             "signatures": [],
             "note": "Uses Incapsula (Reference: https://www.whitefirdesign.com/blog/2016/11/08/more-evidence-that-sitelocks-trueshield-web-application-firewall-is-really-incapsulas-waf/)"
         },
+        "sniper": {
+            "company": "Wins",
+            "name": "Sniper",
+            "regex": "document.title = [^;]+Sniper WAF",
+            "signatures": []
+        },
         "sonicwall": {
             "company": "Dell",
             "name": "SonicWALL",
