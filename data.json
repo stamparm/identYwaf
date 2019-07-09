@@ -680,7 +680,7 @@
         "sniper": {
             "company": "Wins",
             "name": "Sniper",
-            "regex": "document.title = [^;]+Sniper WAF",
+            "regex": "document\\.title = [^;]+Sniper WAF",
             "signatures": []
         },
         "sonicwall": {
