@@ -809,6 +809,14 @@
                 "17a8:RVZXum60OEhCWKpAYKYPkoJyWOpohM4JiUcMrmRXg1qQJbX3uhdOnthtOj+hXrAB16FcPhJPdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
             ]
         },
+        "webland": {
+            "company": "WebLand",
+            "name": "WebLand",
+            "regex": "Server: Apache Protected by Webland WAF",
+            "signatures": [
+                "4ba0:RVZXum60OEhCWKpAYKYPkoJzWOpohc4IiUYMr2RWg1uQJLX3uhZOnthsOj6hXrAA16BcPhJOdLoXomtKaK59nui6c4RmkgI2FZjxtDtAeq6c3qA4chS1XKTC"
+            ]
+        },
         "webseal": {
             "company": "IBM",
             "name": "WebSEAL",
