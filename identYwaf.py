@@ -58,7 +58,7 @@ else:
     HTTPCookieProcessor = urllib2.HTTPCookieProcessor
 
 NAME = "identYwaf"
-VERSION = "1.0.118"
+VERSION = "1.0.119"
 BANNER = r"""
                                    ` __ __ `
  ____  ___      ___  ____   ______ `|  T  T` __    __   ____  _____ 
