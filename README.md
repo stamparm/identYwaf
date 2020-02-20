@@ -32,7 +32,7 @@ Preferably, you can download identYwaf by cloning the Git repository:
 
 `git clone --depth 1 https://github.com/stamparm/identYwaf.git`
 
-**identYwaf** works out of the box with any Python version from **2.6.x** to **3.7.x** on any platform.
+**identYwaf** works out of the box with any Python version from **2.6.x** to **3.x** on any platform.
 
 ## Usage
 
