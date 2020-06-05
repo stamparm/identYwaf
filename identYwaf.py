@@ -125,7 +125,7 @@ codes = set()
 proxies = list()
 proxies_index = 0
 
-_exit = exit
+_exit = sys.exit
 
 def exit(message=None):
     if message:
