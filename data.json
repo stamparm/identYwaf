@@ -542,6 +542,12 @@
                 "125a:RVdXum61OElCWKpAYKYPk4JzWOtohM4JiUcMr2RXg1uQJbX3uhdOn9htOj+hX7AB16FcPxJPdLsXo2tLaK99n+i7c4VmkwI3FZnxtDtBeq+c36A5chW1XaTC"
             ]
         },
+        "openrasp": {
+            "company": "Blackbaud",
+            "name": "OpenRASP",
+            "regex": "400 - Request blocked by OpenRASP|https://rasp.baidu.com/blocked2?/",
+            "signatures": []
+        },
         "paloalto": {
             "company": "Palo Alto Networks",
             "name": "Palo Alto",
