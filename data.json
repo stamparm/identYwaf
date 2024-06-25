@@ -791,6 +791,12 @@
                 "0294:RVdXum60OEhCWKpAYKYPk4JyWOpohM4IiUYMrmRXg1qQJLX2uhdOn9htOj+hXrAB16FcPxJOdLsXomtKaK59nui7c4RmkgI2FZjxtDtAeq+c3qA4chS1XKTC"
             ]
         },
+        "vercel": {
+            "company": "Vercel",
+            "name": "Vercel",
+            "regex": "<title>Vercel Security Checkpoint</title>|/vercel/security/",
+            "signatures": []
+        },
         "vfw": {
             "company": "OWASP",
             "name": "Varnish Firewall",
